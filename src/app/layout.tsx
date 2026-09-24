@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     siteName: office.name,
     locale: "vi_VN",
     type: "website",
-    images: [{ url: "/images/hero.webp", alt: office.name }],
+    images: [{ url: "/images/hero-banner.webp", alt: office.name }],
   },
   formatDetection: { telephone: false },
 };

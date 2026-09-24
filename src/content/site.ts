@@ -112,6 +112,8 @@ export type Service = {
   title: string;
   /** Lower-case noun phrase used inside sentences ("Khi nào cần lập vi bằng?"). */
   name: string;
+  /** Two- or three-word label for tight spots, such as the row of links under the home hero. */
+  label: string;
   summary: string;
   image: string;
   /** Answer-first definition: the sentence an AI engine should quote. */
@@ -127,8 +129,9 @@ export const services: Service[] = [
     slug: "tong-dat",
     title: "Tống đạt giấy tờ, hồ sơ, tài liệu",
     name: "tống đạt",
+    label: "Tống đạt",
     summary: "Tống đạt văn bản của Tòa án, cơ quan thi hành án dân sự đúng trình tự, đúng thời hạn.",
-    image: "/images/services/service-3.jpg",
+    image: "/images/services/tong-dat.webp",
     definition:
       "Tống đạt là việc thông báo, giao giấy tờ, hồ sơ, tài liệu (như giấy triệu tập, thông báo, bản án, quyết định) cho người có liên quan theo đúng trình tự, thủ tục pháp luật quy định. Thừa hành viên thực hiện tống đạt theo yêu cầu của Tòa án và cơ quan thi hành án dân sự.",
     overview: [
@@ -151,8 +154,9 @@ export const services: Service[] = [
     slug: "lap-vi-bang",
     title: "Lập vi bằng",
     name: "lập vi bằng",
+    label: "Lập vi bằng",
     summary: "Ghi nhận sự kiện, hành vi có thật làm nguồn chứng cứ trong giao dịch và tranh chấp.",
-    image: "/images/services/service-4.jpg",
+    image: "/images/services/lap-vi-bang.webp",
     definition:
       "Vi bằng là văn bản do Thừa hành viên (trước đây gọi là Thừa phát lại) lập, ghi nhận sự kiện, hành vi có thật mà Thừa hành viên trực tiếp chứng kiến, theo yêu cầu của cá nhân, cơ quan, tổ chức. Vi bằng là nguồn chứng cứ để Tòa án xem xét khi giải quyết vụ việc và là căn cứ để thực hiện giao dịch theo quy định pháp luật.",
     overview: [
@@ -184,6 +188,7 @@ export const services: Service[] = [
     slug: "xac-minh-dieu-kien-thi-hanh-an",
     title: "Xác minh điều kiện thi hành án dân sự",
     name: "xác minh điều kiện thi hành án",
+    label: "Xác minh điều kiện",
     summary: "Xác minh tài sản, thu nhập và điều kiện thi hành án của người phải thi hành án.",
     image: "/images/services/service-2.webp",
     definition:
@@ -209,8 +214,9 @@ export const services: Service[] = [
     slug: "to-chuc-thi-hanh-an",
     title: "Tổ chức thi hành án dân sự",
     name: "tổ chức thi hành án",
+    label: "Tổ chức thi hành án",
     summary: "Trực tiếp tổ chức thi hành bản án, quyết định dân sự theo yêu cầu của đương sự.",
-    image: "/images/services/service-1.webp",
+    image: "/images/services/to-chuc-thi-hanh-an.webp",
     definition:
       "Tổ chức thi hành án dân sự là việc Thừa hành viên trực tiếp tổ chức thi hành bản án, quyết định của Tòa án theo yêu cầu của đương sự, trong phạm vi pháp luật cho phép: từ vận động tự nguyện thi hành đến áp dụng biện pháp bảo đảm, cưỡng chế thi hành án khi cần thiết.",
     overview: [
@@ -269,8 +275,7 @@ export const team: Member[] = [
     name: "Nguyễn Thành Tín",
     role: "Trưởng Văn phòng",
     title: "Thừa hành viên",
-    // CHỜ: professional portrait from the office; this is a template placeholder.
-    image: "/images/founder.webp",
+    image: "/images/team/nguyen-thanh-tin.webp",
     intro:
       "Thừa hành viên Nguyễn Thành Tín là Trưởng Văn phòng Thi hành án dân sự Quảng Ngãi, với 21 năm kinh nghiệm trong lĩnh vực pháp luật, trong đó có 14 năm làm Thừa hành viên (Thừa phát lại).",
     education: { degree: "Đại học", school: "Trường Đại học Luật Thành phố Hồ Chí Minh" },
@@ -362,7 +367,7 @@ export const faqs = [
   },
   {
     q: "Văn phòng có nhận vụ việc ở ngoài tỉnh không?",
-    a: "Văn phòng thực hiện công việc trên địa bàn tỉnh Quảng Ngãi. Với vụ việc có sự kiện, tài sản hoặc đương sự ở tỉnh khác, vui lòng liên hệ để Thừa hành viên tư vấn phạm vi có thể thực hiện theo quy định pháp luật.",
+    a: "Văn phòng có nhận vụ việc ở ngoài tỉnh, với những vụ việc có sự kiện, tài sản hoặc khách hàng ở tỉnh khác vui lòng liên hệ Văn phòng để được Thừa hành viên tư vấn chi tiết.",
   },
   {
     q: "Vi bằng có giá trị pháp lý như thế nào?",

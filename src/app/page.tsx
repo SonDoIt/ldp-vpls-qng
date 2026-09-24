@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { MemberCard, ServiceCard } from "@/components/cards";
-import { Sparkle } from "@/components/icons";
+import { ChevronRight, Phone, Sparkle } from "@/components/icons";
 import { Marquee } from "@/components/marquee";
 import { PillarsScroller } from "@/components/pillars-scroller";
 import { Reveal } from "@/components/reveal";
 import { ConsultationSection, FaqSection, ProcessSteps, Stats } from "@/components/sections";
-import { Accent, ButtonLink, CredentialBadge, ImageFade, PhotoPanel, PreTitle } from "@/components/ui";
-import { about, faqs, focusAreas, head, highlights, office, officeFacts, services, teamGroups } from "@/content/site";
+import { Accent, ButtonLink, ImageFade, PhotoPanel, PreTitle } from "@/components/ui";
+import { about, faqs, focusAreas, head, office, officeFacts, services, teamGroups } from "@/content/site";
 import { JsonLd, faqSchema } from "@/lib/seo";
+import logoSeal from "../../public/logo.png";
 
 export const metadata: Metadata = {
   title: { absolute: `${office.name} – Thừa hành viên (Thừa phát lại) Quảng Ngãi` },
@@ -16,53 +18,73 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
+/**
+ * Navy and gold from the office's banner, without the banner: the seal, one headline and the four
+ * functions as a row of links along the bottom edge. Fills the first screen.
+ */
 function Hero() {
   return (
-    <section className="bg-cream pt-28 md:pt-36">
-      <div className="container-site">
-        <div className="mx-auto max-w-[1100px] rounded-t-xl bg-[linear-gradient(180deg,var(--color-sand),var(--color-cream))] p-2 md:rounded-t-3xl md:p-2.5">
-          <Marquee duration={30} className="mask-fade-x mx-auto max-w-md py-3 text-sm text-heading md:py-3.5">
-            {highlights.map((h) => (
-              <span key={h} className="flex items-center gap-5 whitespace-nowrap">
-                {h}
-                <Sparkle className="size-3" />
-              </span>
-            ))}
-          </Marquee>
-          <PhotoPanel
-            src="/images/hero.webp"
-            priority
-            sizes="(min-width: 1140px) 1080px, 100vw"
-            fadeTo="cream"
-            aspect="aspect-[4/4.2]"
-            fadeClassName="h-[55%] md:h-[80%]"
-            imageClassName="object-top"
-            className="rounded-t-lg bg-cream text-center md:min-h-[50rem] md:rounded-t-3xl"
-            contentClassName="px-4 pb-8 md:pb-10"
+    <section className="on-dark relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-heading">
+      {/* Soft gold light behind the seal, the only ornament. */}
+      <div
+        aria-hidden="true"
+        className="absolute top-[-25%] left-1/2 -z-10 size-[64rem] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(184_146_74/0.2),transparent)]"
+      />
+      <div className="container-site flex flex-1 flex-col items-center justify-center pt-32 pb-14 text-center md:pt-36 md:pb-16">
+        <Image
+          src={logoSeal}
+          alt=""
+          width={160}
+          height={160}
+          priority
+          className="size-28 animate-fade-in rounded-full ring-1 ring-accent/40 md:size-36 lg:size-40"
+        />
+        <h1 className="mt-8 max-w-4xl animate-fade-in text-[2.625rem] leading-[1.06] text-white [animation-delay:60ms] md:mt-10 md:text-[4.5rem] lg:text-[5.25rem]">
+          Thừa hành viên <span className="whitespace-nowrap text-accent-ink">tận tâm</span> tại Quảng Ngãi
+        </h1>
+        <p className="mt-6 animate-fade-in text-base text-balance text-white/70 [animation-delay:120ms] md:text-lg">
+          {office.slogan} · {office.credential.top}
+        </p>
+        <div className="mt-10 flex animate-fade-in flex-col items-center gap-5 [animation-delay:180ms] sm:flex-row sm:gap-8">
+          <ButtonLink href="/lien-he">Gửi yêu cầu tư vấn</ButtonLink>
+          <a
+            href={office.phoneHref}
+            className="flex items-center gap-2.5 text-lg font-semibold text-white transition-colors duration-200 hover:text-accent"
           >
-            <div className="flex flex-col items-center">
-              <h1 className="max-w-5xl text-[2.625rem] leading-[1.1] md:text-[4.25rem] lg:text-[4.75rem]">
-                Thừa hành viên <span className="whitespace-nowrap text-accent-ink">tận tâm</span> tại Quảng Ngãi
-              </h1>
-              <p data-reveal className="mt-5 max-w-2xl text-base md:text-lg">
-                {office.name}: tống đạt, lập vi bằng, xác minh điều kiện thi hành án dân sự và tổ chức thi hành
-                án dân sự, khách quan và đúng quy định pháp luật.
-              </p>
-              <div data-reveal className="mt-8 flex flex-col items-center gap-6 sm:flex-row sm:gap-8">
-                <ButtonLink href="/lien-he">Gửi yêu cầu tư vấn</ButtonLink>
-                <CredentialBadge />
-              </div>
-            </div>
-          </PhotoPanel>
+            <Phone className="size-5" />
+            {office.phone}
+          </a>
         </div>
       </div>
+
+      <nav aria-label="Chức năng" className="animate-fade-in border-t border-white/10 [animation-delay:260ms]">
+        <ul className="container-site grid grid-cols-2 lg:grid-cols-4">
+          {services.map((s, i) => (
+            <li
+              key={s.slug}
+              className="border-white/10 max-lg:odd:border-r max-lg:[&:nth-child(-n+2)]:border-b lg:not-last:border-r"
+            >
+              <Link
+                href={`/dich-vu/${s.slug}`}
+                className="group flex items-center justify-between gap-3 px-4 py-5 text-white/75 transition-colors duration-200 hover:text-white md:px-6 md:py-7"
+              >
+                <span className="flex items-baseline gap-3">
+                  <span className="text-sm text-accent-ink tabular-nums">0{i + 1}</span>
+                  <span className="text-[0.9375rem] font-semibold md:text-lg">{s.label}</span>
+                </span>
+                <ChevronRight className="size-4 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-1" />
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </section>
   );
 }
 
 function ServicesPreview() {
   return (
-    <section className="bg-[linear-gradient(180deg,var(--color-cream)_50%,#fff_50%)]">
+    <section className="pt-5 md:pt-8">
       <div className="container-site">
         <h2 className="sr-only">Dịch vụ của Văn phòng</h2>
         <div className="grid gap-5 rounded-t-lg bg-white p-2.5 md:grid-cols-2 md:rounded-t-xl md:p-5">
@@ -204,7 +226,7 @@ function Benefit() {
               Bảo vệ quyền lợi. Vững <Accent>niềm tin</Accent>
             </h2>
             <div data-reveal className="mt-8 flex flex-col items-center gap-4 rounded-md border border-line bg-cream p-4 sm:flex-row sm:gap-5 sm:py-3 sm:pr-3 sm:pl-5 md:mt-10">
-              <p className="max-w-64 text-heading sm:text-left md:text-lg">Phục vụ cá nhân, tổ chức trên địa bàn tỉnh Quảng Ngãi</p>
+              <p className="max-w-64 text-heading sm:text-left md:text-lg">Phục vụ cá nhân, tổ chức trên địa bàn toàn quốc</p>
               <ButtonLink href="/lien-he" size="sm">
                 Liên hệ Văn phòng
               </ButtonLink>

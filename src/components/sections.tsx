@@ -81,7 +81,7 @@ export function ConsultationSection() {
       <div className="container-site grid items-stretch gap-8 lg:grid-cols-2 lg:gap-10">
         <Reveal className="relative isolate flex min-h-[26rem] flex-col justify-end overflow-hidden rounded-t-lg md:min-h-[36rem] md:rounded-t-xl">
           <Image
-            src="/images/contact.jpg"
+            src="/images/office.webp"
             alt=""
             fill
             sizes="(min-width: 64rem) 45vw, 100vw"

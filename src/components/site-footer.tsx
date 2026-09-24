@@ -44,7 +44,7 @@ export function SiteFooter() {
                   {s.label}: <span className="text-white">{s.time}</span>
                 </li>
               ))}
-              <li className="mt-2">Thứ 7, Chủ nhật: nghỉ</li>
+              <li className="mt-2">Thứ 7, Chủ nhật: nghỉ (làm việc nếu có yêu cầu)</li>
             </ul>
           </div>
           <div data-reveal>
