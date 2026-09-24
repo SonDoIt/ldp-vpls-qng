@@ -1,37 +1,23 @@
 import Image from "next/image";
-import { office } from "@/content/site";
+import Link from "next/link";
 import logoSeal from "../../public/logo.png";
 
 /**
- * The office's round seal. Always sits beside text that names the office, so it is decorative.
- * `size` is the rendered width in CSS pixels; it picks the 1x/2x source, the class sets the box.
+ * Seal plus the office name in the display serif, in the slot where the reference shows its
+ * burst + wordmark. `tone="light"` is for the brown footer.
  */
-export function LogoMark({ size, className = "" }: { size: number; className?: string }) {
+export function Logo({ tone = "dark", className = "" }: { tone?: "dark" | "light"; className?: string }) {
   return (
-    <Image
-      src={logoSeal}
-      alt=""
-      width={size}
-      height={size}
-      className={`shrink-0 rounded-full ${className}`}
-    />
-  );
-}
-
-export function Logo({ tone = "light" }: { tone?: "light" | "dark" }) {
-  const nameColor = tone === "light" ? "text-white" : "text-navy-900";
-  const sloganColor = tone === "light" ? "text-gold-300" : "text-gold-700";
-  return (
-    <span className="flex items-center gap-3">
-      <LogoMark size={44} className="size-11" />
-      <span className="flex flex-col leading-tight">
-        <span className={`text-[13px] font-semibold tracking-[0.01em] sm:text-sm ${nameColor}`}>
-          Văn phòng Thi hành án dân sự
-          <br />
-          Quảng Ngãi
-        </span>
-        <span className={`mt-0.5 text-xs ${sloganColor}`}>{office.slogan}</span>
+    <Link href="/" className={`flex items-center gap-2.5 ${className}`} aria-label="Trang chủ">
+      <Image src={logoSeal} alt="" width={40} height={40} className="size-9 shrink-0 rounded-full md:size-10" />
+      <span
+        className={`font-serif text-[15px] leading-[1.15] md:text-base ${
+          tone === "dark" ? "text-heading" : "text-white"
+        }`}
+      >
+        Văn phòng Thi hành án dân sự
+        <span className="block text-accent">Quảng Ngãi</span>
       </span>
-    </span>
+    </Link>
   );
 }
