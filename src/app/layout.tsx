@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
+import { ConsultPopup } from "@/components/consult-popup";
 import { FloatingContact } from "@/components/floating-contact";
 import { ScrollEffects } from "@/components/scroll-effects";
 import { SiteFooter } from "@/components/site-footer";
@@ -58,6 +59,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main id="main">{children}</main>
         <SiteFooter />
         <FloatingContact />
+        <ConsultPopup />
         <ScrollEffects />
       </body>
     </html>

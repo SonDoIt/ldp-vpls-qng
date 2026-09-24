@@ -43,3 +43,6 @@ next-env.d.ts
 
 # browser automation debug output
 /.playwright-mcp/
+
+# contact-form mail queue (customer data and attachments)
+/.data/

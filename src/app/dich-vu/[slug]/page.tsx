@@ -82,7 +82,7 @@ export default async function ServicePage({ params }: PageProps<"/dich-vu/[slug]
           <article className="flex flex-col gap-14 md:text-lg">
             <div data-reveal>
               <h2 className="text-3xl first-letter:uppercase md:text-4xl">{service.name} là gì?</h2>
-              <p className="mt-4 rounded-xs border-l-2 border-accent bg-cream px-4 py-3 text-heading">{service.definition}</p>
+              <p className="mt-4 rounded-xs border border-accent/30 bg-cream px-4 py-3 text-heading">{service.definition}</p>
               <div className="mt-4 flex flex-col gap-3">
                 {service.overview.map((p) => (
                   <p key={p}>{p}</p>
@@ -148,7 +148,7 @@ export default async function ServicePage({ params }: PageProps<"/dich-vu/[slug]
               </div>
             </SideCard>
             <SideCard title="Gửi yêu cầu tư vấn">
-              <ContactForm compact />
+              <ContactForm variant="compact" />
             </SideCard>
           </aside>
         </div>

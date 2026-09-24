@@ -36,6 +36,7 @@ export default function PrivacyPage() {
           title: "Chia sẻ thông tin",
           paragraphs: [
             "Chúng tôi không bán hay trao đổi thông tin cá nhân. Thông tin chỉ được cung cấp cho cơ quan nhà nước có thẩm quyền khi pháp luật yêu cầu.",
+            "Yêu cầu gửi qua biểu mẫu được chuyển tới hộp thư điện tử của Văn phòng (dịch vụ Gmail của Google). Để chặn thư rác, biểu mẫu dùng dịch vụ Cloudflare Turnstile, dịch vụ này ghi nhận thông tin kỹ thuật của trình duyệt như địa chỉ IP.",
           ],
         },
         {
