@@ -224,6 +224,41 @@ body {
     transform 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--reveal-delay, 0ms);
 }
 
+/*
+ * Slim scrollbar: a navy pill on a clear track that darkens under the pointer. Chromium and Safari
+ * take the ::-webkit-scrollbar rules (a transparent border insets the pill from the edge); Firefox,
+ * which has no such pseudo-elements, gets the standard thin width and colours instead.
+ */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background: rgb(10 20 40 / 0.28) padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(10 20 40 / 0.5);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(10 20 40 / 0.28) transparent;
+  }
+}
+
 /* Lenis animates the scroll itself; native smooth scrolling would fight it. */
 html.lenis {
   scroll-behavior: auto;
