@@ -99,7 +99,7 @@ export default async function ServicePage({ params }: PageProps<"/dich-vu/[slug]
                 </ul>
               </div>
               <div className="relative aspect-[4/2.6] overflow-hidden rounded-md">
-                <Image src="/images/services/why-choose.jpg" alt="" fill sizes="(min-width: 64rem) 25vw, 90vw" className="object-cover" />
+                <Image src={service.image} alt="" fill sizes="(min-width: 64rem) 25vw, 90vw" className="object-cover" />
               </div>
             </div>
             <div data-reveal>

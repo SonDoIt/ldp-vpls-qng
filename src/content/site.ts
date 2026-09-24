@@ -455,7 +455,7 @@ export const articles: Article[] = [
     description:
       "Vi bằng là văn bản do Thừa hành viên lập, ghi nhận sự kiện, hành vi có thật. Tìm hiểu giá trị pháp lý của vi bằng, điểm khác với công chứng và những việc không được lập vi bằng.",
     category: "Vi bằng",
-    image: "/images/services/why-choose.jpg",
+    image: "/images/services/vi-bang-doc.webp",
     published: "2026-09-24",
     updated: "2026-09-24",
     answer:
