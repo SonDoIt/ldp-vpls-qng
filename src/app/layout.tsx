@@ -1,17 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Newsreader } from "next/font/google";
+import { Newsreader } from "next/font/google";
 import { ScrollEffects } from "@/components/scroll-effects";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { office } from "@/content/site";
 import { JsonLd, absoluteUrl, organizationSchema, websiteSchema } from "@/lib/seo";
 import "./globals.css";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin", "vietnamese"],
-  display: "swap",
-});
 
 // The reference uses Libre Caslon Text, which has no Vietnamese glyphs; Newsreader is the
 // closest transitional serif that does, so diacritics never fall back to another face.
@@ -52,7 +46,7 @@ const revealScript = `(function(){var d=document.documentElement;if(matchMedia("
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="vi" className={`${inter.variable} ${serif.variable} antialiased`} suppressHydrationWarning>
+    <html lang="vi" className={`${serif.variable} antialiased`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: revealScript }} />
       </head>
