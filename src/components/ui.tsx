@@ -4,9 +4,13 @@ import type { ComponentProps, ReactNode } from "react";
 import { office } from "@/content/site";
 import { Burst, Sparkle } from "./icons";
 
-/** Orange emphasis inside a heading ("Chuyên nghiệp <Accent>tận tâm</Accent>"). */
-export function Accent({ children }: { children: ReactNode }) {
-  return <span className="text-accent-ink">{children}</span>;
+/**
+ * The stylised word inside a heading ("Thừa hành viên <Accent>tận tâm</Accent>"): Fraunces at its
+ * softest, drawn as a gold outline (see `text-hollow-accent`). Tracking is loosened back from the
+ * heading's -0.03em because the serif needs the air.
+ */
+export function Accent({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return <span className={`font-accent font-bold tracking-[-0.01em] text-hollow-accent ${className}`}>{children}</span>;
 }
 
 /** Small kicker above a heading, prefixed with the outlined sparkle. */

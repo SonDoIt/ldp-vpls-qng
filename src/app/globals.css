@@ -4,6 +4,8 @@
   /* Gold for text: darkened on light surfaces to meet WCAG AA, bright on the navy ones (.on-dark). */
   --color-accent-ink: var(--accent-ink);
   --font-sans: var(--font-manrope), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-accent: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-accent--font-variation-settings: "SOFT" 100;
 }
 
 /*
@@ -126,10 +128,19 @@
   color: transparent;
 }
 
+/* The outlined word in a heading: hollow glyphs traced in gold. The stroke follows the type size but
+   never drops under 1.25px, so it stays legible at the 32px headings on phones. `paint-order` keeps
+   the stroke outside the (transparent) fill so the letter counters do not close up. */
+@utility text-hollow-accent {
+  color: transparent;
+  -webkit-text-stroke: max(1.25px, 0.02em) var(--accent-ink);
+  paint-order: stroke fill;
+}
+
 /* Display lines that are not headings (pull quotes, footer tagline, logo) take the heading weight. */
 @utility font-display {
-  font-weight: 600;
-  letter-spacing: -0.015em;
+  font-weight: 800;
+  letter-spacing: -0.03em;
 }
 
 /* Soft edges for horizontal marquees. */
@@ -197,6 +208,7 @@ body {
     line-height: 1.5;
   }
 
+  /* Headings are the heaviest Manrope cut, tracked tight; the `Accent` word inside them switches face. */
   h1,
   h2,
   h3,
@@ -204,8 +216,8 @@ body {
   h5,
   h6 {
     color: var(--color-heading);
-    font-weight: 600;
-    letter-spacing: -0.015em;
+    font-weight: 800;
+    letter-spacing: -0.03em;
     line-height: 1.2;
     text-wrap: balance;
   }

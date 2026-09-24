@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope } from "next/font/google";
+import { Fraunces, Manrope } from "next/font/google";
 import { ConsultPopup } from "@/components/consult-popup";
 import { FloatingContact } from "@/components/floating-contact";
 import { ScrollEffects } from "@/components/scroll-effects";
@@ -9,11 +9,21 @@ import { office } from "@/content/site";
 import { JsonLd, absoluteUrl, organizationSchema, websiteSchema } from "@/lib/seo";
 import "./globals.css";
 
-// The site's only face, for body and headings alike. Variable, so every weight in use comes from one
+// The site's face for body and headings alike. Variable, so every weight in use comes from one
 // file per subset, and it covers Vietnamese diacritics natively.
 const sans = Manrope({
   variable: "--font-manrope",
   subsets: ["latin", "vietnamese"],
+  display: "swap",
+});
+
+// Second face, for the outlined word in headings only (`Accent`). SOFT is the rounded-terminal axis;
+// opsz lets the browser pick the optical size from the font size.
+const accent = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin", "vietnamese"],
+  weight: "variable",
+  axes: ["SOFT", "opsz"],
   display: "swap",
 });
 
@@ -49,7 +59,7 @@ const revealScript = `(function(){var d=document.documentElement;if(matchMedia("
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="vi" className={`${sans.variable} antialiased`} suppressHydrationWarning>
+    <html lang="vi" className={`${sans.variable} ${accent.variable} antialiased`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: revealScript }} />
       </head>

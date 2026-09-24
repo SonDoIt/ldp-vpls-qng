@@ -40,7 +40,7 @@ function Hero() {
           className="size-28 animate-fade-in rounded-full ring-1 ring-accent/40 md:size-36 lg:size-40"
         />
         <h1 className="mt-8 max-w-5xl animate-fade-in text-4xl text-white [animation-delay:60ms] md:mt-10 md:text-6xl lg:text-7xl">
-          Thừa hành viên <span className="whitespace-nowrap text-accent-ink">tận tâm</span> tại Quảng Ngãi
+          Thừa hành viên <Accent className="whitespace-nowrap">tận tâm</Accent> tại Quảng Ngãi
         </h1>
         <p className="mt-6 animate-fade-in text-base text-balance text-white/70 [animation-delay:120ms] md:text-lg">
           {office.slogan} · {office.credential.top}
