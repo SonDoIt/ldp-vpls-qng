@@ -20,6 +20,12 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Layout
+
+The fixed site header is 72px on phones, 80px on tablets, and 88px on wide screens. Navigation switches to the menu below 1280px so the larger brand and contact action remain readable. In-page scroll offsets are set in `src/app/globals.css`.
+
+The homepage service preview is an image-led gallery: all four services link to their detail pages, with the vi bằng image featured on wide screens. Its content and images come from `src/content/site.ts`; the gallery layout lives in `src/app/page.tsx`.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

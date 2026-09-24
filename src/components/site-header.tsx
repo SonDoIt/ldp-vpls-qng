@@ -13,10 +13,8 @@ function isActive(pathname: string, href: string) {
 }
 
 /**
- * A thin strip flush with the top edge of every page, fixed but only 60px tall so it covers as
- * little of the text as possible. White at the very top; once the page moves it turns frosted cream
- * with a hairline underneath. Desktop: links with a "Trang" dropdown, phone and CTA on the right.
- * Below lg the links collapse into a panel under the strip.
+ * Fixed navigation with a full-size brand and contact action on desktop.
+ * Below xl the links collapse into a panel so the larger elements do not crowd each other.
  */
 export function SiteHeader() {
   const pathname = usePathname();
@@ -62,10 +60,10 @@ export function SiteHeader() {
         scrolled || menuOpen ? "border-line bg-cream/85" : "border-transparent bg-white"
       }`}
     >
-      <div className="container-site flex h-[3.75rem] items-center justify-between gap-4">
-        <Logo className="[&_img]:size-8 [&>span]:text-[0.875rem]" />
+      <div className="container-site flex h-[4.5rem] items-center justify-between gap-4 md:h-20 xl:h-[5.5rem]">
+        <Logo className="gap-3 [&_img]:size-11 md:[&_img]:size-12 xl:[&_img]:size-14 [&>span]:text-[0.9375rem] xl:[&>span]:text-[1.0625rem]" />
 
-        <nav aria-label="Chính" className="hidden items-center gap-6 lg:flex xl:gap-9">
+        <nav aria-label="Chính" className="hidden items-center gap-6 xl:flex 2xl:gap-9">
           {mainNav.slice(0, 2).map((item) => (
             <Link key={item.href} href={item.href} className={linkClass(isActive(pathname, item.href))}>
               {item.label}
@@ -109,17 +107,17 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <a
             href={office.phoneHref}
-            className="hidden items-center gap-2 text-[0.9375rem] font-semibold whitespace-nowrap text-heading md:flex"
+            className="hidden items-center gap-2 text-base font-semibold whitespace-nowrap text-heading md:flex xl:text-[1.0625rem]"
           >
-            <Phone className="size-4 text-accent-ink" />
+            <Phone className="size-[1.125rem] text-accent-ink" />
             {office.phone}
           </a>
           <Link
             href="/lien-he"
-            className="hidden rounded-xs bg-accent px-4 py-2 text-[0.9375rem] font-semibold whitespace-nowrap text-heading transition-colors duration-300 hover:bg-line sm:block"
+            className="hidden min-h-12 items-center rounded-xs bg-accent px-5 text-base font-semibold whitespace-nowrap text-heading transition-colors duration-300 hover:bg-line sm:inline-flex xl:min-h-[3.25rem] xl:px-6 xl:text-[1.0625rem]"
           >
             Liên hệ tư vấn
           </Link>
@@ -129,19 +127,19 @@ export function SiteHeader() {
             aria-controls="mobile-menu"
             aria-label={menuOpen ? "Đóng menu" : "Mở menu"}
             onClick={() => setMenuOpen((v) => !v)}
-            className="grid size-9 place-items-center rounded-xs bg-heading text-white lg:hidden"
+            className="grid size-11 place-items-center rounded-xs bg-heading text-white xl:hidden"
           >
-            {menuOpen ? <Close className="size-4" /> : <Menu className="size-4" />}
+            {menuOpen ? <Close className="size-5" /> : <Menu className="size-5" />}
           </button>
         </div>
       </div>
 
       {menuOpen && (
-        <div className="container-site pb-3 lg:hidden">
+        <div className="container-site pb-3 xl:hidden">
           <nav
             id="mobile-menu"
             aria-label="Menu di động"
-            className="max-h-[calc(100dvh-5rem)] animate-fade-in overflow-y-auto rounded-md border border-line bg-white p-4"
+            className="max-h-[calc(100dvh-4.5rem)] animate-fade-in overflow-y-auto rounded-md border border-line bg-white p-4 md:max-h-[calc(100dvh-5rem)]"
           >
             <ul className="flex flex-col">
               {[...mainNav.slice(0, 2), ...pagesNav, ...mainNav.slice(2)].map((item) => (

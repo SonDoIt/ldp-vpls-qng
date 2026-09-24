@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { MemberCard, ServiceCard } from "@/components/cards";
+import { MemberCard } from "@/components/cards";
 import { ChevronRight, Phone, Sparkle } from "@/components/icons";
 import { Marquee } from "@/components/marquee";
 import { PillarsScroller } from "@/components/pillars-scroller";
@@ -82,16 +82,58 @@ function Hero() {
   );
 }
 
+const galleryServices = [services[1], services[0], services[2], services[3]];
+const galleryPositions = [
+  "min-h-[25rem] lg:col-span-6 lg:row-span-2 lg:min-h-0",
+  "min-h-[19rem] lg:col-span-6 lg:min-h-0",
+  "min-h-[19rem] lg:col-span-3 lg:min-h-0",
+  "min-h-[19rem] lg:col-span-3 lg:min-h-0",
+];
+
 function ServicesPreview() {
   return (
-    <section className="pt-5 md:pt-8">
+    <section aria-labelledby="services-gallery-title" className="bg-heading py-16 text-white md:py-20">
       <div className="container-site">
-        <h2 className="sr-only">Dịch vụ của Văn phòng</h2>
-        <div className="grid gap-5 rounded-t-lg bg-white p-2.5 md:grid-cols-2 md:rounded-t-xl md:p-5">
-          {services.map((s) => (
-            <Reveal key={s.slug}>
-              <ServiceCard service={s} />
-            </Reveal>
+        <div className="mb-8 flex flex-col gap-4 md:mb-10 md:flex-row md:items-end md:justify-between md:gap-10">
+          <div>
+            <h2 id="services-gallery-title" className="max-w-2xl text-3xl font-semibold leading-tight tracking-tight text-white md:text-4xl lg:text-[2.75rem]">
+              Dịch vụ gắn với từng sự việc
+            </h2>
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/70 md:text-base">
+              Từ ghi nhận hiện trạng đến đưa bản án vào thực tế, mỗi công việc đều cần một cách thực hiện rõ ràng.
+            </p>
+          </div>
+          <span className="hidden shrink-0 text-sm text-[#dcc393] md:block">{office.shortName}</span>
+        </div>
+
+        <div className="grid gap-3 lg:h-[42rem] lg:grid-cols-12 lg:grid-rows-2 lg:gap-4">
+          {galleryServices.map((service, index) => (
+            <Link
+              key={service.slug}
+              href={`/dich-vu/${service.slug}`}
+              className={`group relative isolate flex flex-col justify-end overflow-hidden rounded-sm bg-heading-soft p-5 text-white focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#dcc393] md:p-7 ${galleryPositions[index]}`}
+              aria-label={`Tìm hiểu dịch vụ ${service.title}`}
+            >
+              <Image
+                src={service.image}
+                alt=""
+                fill
+                sizes={index < 2 ? "(min-width: 1440px) 670px, (min-width: 1024px) 50vw, 100vw" : "(min-width: 1440px) 335px, (min-width: 1024px) 25vw, 100vw"}
+                className="-z-20 object-cover transition-transform duration-300 ease-out motion-reduce:transition-none group-hover:scale-[1.035]"
+              />
+              <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-t from-heading/95 via-heading/55 to-heading/15" />
+              <div className="max-w-[33rem]">
+                <h3 className={`font-semibold leading-tight tracking-tight text-white ${index === 0 ? "text-[1.8rem] md:text-[2.5rem]" : "text-[1.35rem] md:text-[1.6rem] lg:text-[1.35rem] xl:text-[1.55rem]"}`}>
+                  {service.title}
+                </h3>
+                <p className={`mt-2 leading-relaxed text-white/90 ${index === 0 ? "text-sm md:text-base" : "text-[0.8125rem] md:text-sm"}`}>
+                  {service.summary}
+                </p>
+                <span className="mt-4 inline-flex items-center gap-2 text-[0.8125rem] font-semibold text-[#f0d39c] md:mt-5">
+                  Xem chi tiết <span aria-hidden="true">↗</span>
+                </span>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
