@@ -19,7 +19,7 @@ function Hero() {
       <div className="container-site">
         <div className="relative isolate mx-auto flex min-h-[22rem] max-w-[1100px] flex-col justify-end overflow-hidden rounded-t-lg px-4 text-center md:min-h-[32rem] md:rounded-t-xl">
           <Image
-            src="/images/about-hero.webp"
+            src="/images/about-banner.webp"
             alt=""
             fill
             loading="eager"

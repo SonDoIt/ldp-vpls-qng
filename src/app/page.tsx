@@ -154,7 +154,7 @@ function Justice() {
             Công lý
           </p>
           <div data-reveal className="relative aspect-[180/190] w-36 overflow-hidden rounded-t-md md:w-[11.25rem]">
-            <Image src="/images/justice-portrait.webp" alt="" fill sizes="180px" className="object-cover" />
+            <Image src="/images/head-portrait-v2.webp" alt="" fill sizes="180px" className="object-cover" />
             <ImageFade to="white" className="h-[45%]" />
           </div>
         </div>

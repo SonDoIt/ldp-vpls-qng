@@ -156,7 +156,7 @@ export const services: Service[] = [
     name: "lập vi bằng",
     label: "Lập vi bằng",
     summary: "Ghi nhận sự kiện, hành vi có thật làm nguồn chứng cứ trong giao dịch và tranh chấp.",
-    image: "/images/services/lap-vi-bang.webp",
+    image: "/images/services/vi-bang-doc.webp",
     definition:
       "Vi bằng là văn bản do Thừa hành viên (trước đây gọi là Thừa phát lại) lập, ghi nhận sự kiện, hành vi có thật mà Thừa hành viên trực tiếp chứng kiến, theo yêu cầu của cá nhân, cơ quan, tổ chức. Vi bằng là nguồn chứng cứ để Tòa án xem xét khi giải quyết vụ việc và là căn cứ để thực hiện giao dịch theo quy định pháp luật.",
     overview: [
