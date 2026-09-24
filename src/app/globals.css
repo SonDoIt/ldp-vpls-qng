@@ -3,9 +3,7 @@
 @theme inline {
   /* Gold for text: darkened on light surfaces to meet WCAG AA, bright on the navy ones (.on-dark). */
   --color-accent-ink: var(--accent-ink);
-  /* Body text uses the platform UI font (Roboto, SF Pro, Segoe UI): shaping Vietnamese with a web font
-     held the first paint back on mobile, and these faces all cover Vietnamese natively. */
-  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-manrope), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-serif: var(--font-serif-display), ui-serif, Georgia, serif;
 }
 
