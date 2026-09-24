@@ -92,11 +92,11 @@
   }
 }
 
-/* 1360px content. Gutters and section rhythm are EvonHub spacing steps: space.3 (1.25rem) and
+/* 1040px content. Gutters and section rhythm are EvonHub spacing steps: space.3 (1.25rem) and
    space.5 (2.5rem) gutters, space.6 (7.5rem) between sections, half of it on phones. */
 @utility container-site {
   width: 100%;
-  max-width: calc(1360px + 2 * var(--gutter));
+  max-width: calc(1040px + 2 * var(--gutter));
   margin-inline: auto;
   padding-inline: var(--gutter);
 }
