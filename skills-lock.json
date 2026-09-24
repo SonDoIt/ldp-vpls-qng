@@ -85,6 +85,12 @@
       "skillPath": "skills/review-animations/SKILL.md",
       "computedHash": "8c2befeb28bb484bf2de7b2fc228774857e266d32a65d76895e78651a536d8cf"
     },
+    "ui-ux-pro-max": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "computedHash": "eb75bf6085080d7d31fa2c0f9fd98d49abd229356147999b09177b733276f806"
+    },
     "write-swift": {
       "source": "emilkowalski/skills",
       "sourceType": "github",
