@@ -74,7 +74,7 @@ export default async function ArticlePage({ params }: PageProps<"/kien-thuc/[slu
 
       <section className="section-y">
         <article className="container-narrow md:text-lg">
-          <div data-reveal className="rounded-sm border-l-2 border-accent bg-cream p-5 md:p-6">
+          <div data-reveal className="rounded-sm border border-accent/30 bg-cream p-5 md:p-6">
             <p className="text-sm font-semibold text-heading">Trả lời ngắn</p>
             <p className="mt-2 text-heading">{item.answer}</p>
           </div>

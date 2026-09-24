@@ -63,10 +63,13 @@ export function SiteHeader() {
     `inline-flex min-h-11 items-center text-base font-semibold whitespace-nowrap decoration-accent decoration-2 underline-offset-8 transition-colors hover:text-accent-ink active:translate-y-px ${
       active ? "text-accent-ink underline" : "text-body"
     }`;
-  // Panel rows: hover fills, the current page gets the accent rule on its left edge (border.strong).
+  // Panel rows: hover fills; the current page keeps a tinted fill, bolder text and a trailing accent dot,
+  // so it reads as selected without relying on colour alone.
   const rowClass = (active: boolean) =>
-    `flex min-h-11 items-center rounded-xs border-l-2 px-3 transition-colors hover:bg-cream active:bg-sand ${
-      active ? "border-accent text-heading" : "border-transparent text-body hover:text-heading"
+    `flex min-h-11 items-center justify-between gap-3 rounded-xs px-3 transition-colors active:bg-sand ${
+      active
+        ? "bg-accent/12 font-semibold text-heading after:size-1.5 after:shrink-0 after:rounded-full after:bg-accent after:content-['']"
+        : "text-body hover:bg-cream hover:text-heading"
     }`;
 
   return (

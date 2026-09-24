@@ -136,7 +136,7 @@ function FaqList({ className = "" }: { className?: string }) {
           key={f.q}
           name="faq"
           open={i === 0}
-          className="group rounded-xs border border-l-2 border-line bg-cream transition-colors open:border-l-accent open:bg-white"
+          className="group rounded-xs border border-line bg-cream transition-[background-color,border-color,box-shadow] open:border-accent/40 open:bg-white open:shadow-sm"
         >
           <summary className="flex min-h-14 cursor-pointer items-center justify-between gap-4 px-5 py-3 text-heading transition-colors hover:text-accent-ink md:text-lg">
             {f.q}

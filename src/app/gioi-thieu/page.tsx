@@ -56,7 +56,7 @@ function WhoWeAre() {
           </Reveal>
           <Reveal>
             <blockquote className="rounded-sm bg-sand p-5 md:p-6">
-              <p className="border-l-2 border-accent pl-4 font-display text-xl leading-snug text-heading md:text-2xl">
+              <p className="font-display text-xl leading-snug text-heading md:text-2xl">
                 {office.slogan}.
               </p>
             </blockquote>

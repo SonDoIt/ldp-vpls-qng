@@ -1,13 +1,16 @@
 import { office } from "@/content/site";
+import { ScrollTopButton } from "./scroll-top-button";
 
 // Hover lifts 2px, press sinks back and shrinks, keyboard focus takes the global ring. 56px+ targets.
-const buttonClass =
-  "grid size-14 place-items-center rounded-full text-white shadow-float transition-transform ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-95 md:size-16";
+const shapeClass =
+  "grid size-14 place-items-center rounded-full shadow-float ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-95 md:size-16";
+const buttonClass = `${shapeClass} text-white transition-transform`;
 
-/** Zalo and call buttons pinned to the bottom-right corner of every page. */
+/** Back-to-top, Zalo and call buttons pinned to the bottom-right corner of every page. */
 export function FloatingContact() {
   return (
     <div className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-4 z-40 flex flex-col gap-3 md:right-6 md:gap-4">
+      <ScrollTopButton className={shapeClass} />
       <a
         href={office.zaloHref}
         target="_blank"
