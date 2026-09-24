@@ -2,20 +2,20 @@ import type { Metadata } from "next";
 import { LegalPage } from "@/components/legal-page";
 import { office } from "@/content/site";
 
-export const metadata: Metadata = { title: "Chính sách bảo mật" };
+export const metadata: Metadata = { title: "Chính sách bảo mật", alternates: { canonical: "/chinh-sach-bao-mat" } };
 
 // MẪU: have the office's legal team review this text before launch.
 export default function PrivacyPage() {
   return (
     <LegalPage
       title="Chính sách bảo mật"
-      updated="01/2026"
+      updated="09/2026"
       intro={`${office.name} tôn trọng và cam kết bảo vệ thông tin cá nhân của khách hàng. Chính sách này giải thích cách chúng tôi thu thập, sử dụng và bảo vệ thông tin khi bạn sử dụng website và dịch vụ của Văn phòng.`}
       sections={[
         {
           title: "Thông tin chúng tôi thu thập",
           paragraphs: [
-            "Khi bạn gửi yêu cầu tư vấn hoặc liên hệ, chúng tôi có thể thu thập họ tên, số điện thoại, email, nội dung yêu cầu và các tài liệu bạn chủ động cung cấp.",
+            "Khi bạn gửi yêu cầu tư vấn hoặc liên hệ, chúng tôi thu thập họ tên, số điện thoại, nội dung cần tư vấn và hồ sơ bạn chủ động đính kèm.",
             "Website có thể ghi nhận thông tin kỹ thuật cơ bản như loại trình duyệt, thời gian truy cập nhằm cải thiện chất lượng dịch vụ.",
           ],
         },

@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import { MemberCard } from "@/components/cards";
+import { StarFilled } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
 import { CtaBanner, DarkPageHero, Stats } from "@/components/sections";
-import { Accent } from "@/components/ui";
-import { team } from "@/content/site";
+import { Accent, ButtonLink, PreTitle } from "@/components/ui";
+import { head, teamGroups } from "@/content/site";
+import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Đội ngũ",
-  description: "Đội ngũ chấp hành viên, thư ký nghiệp vụ và chuyên viên pháp lý của Văn phòng.",
+  description: `Thừa hành viên ${head.name}, Trưởng Văn phòng, cùng các chuyên gia thi hành án dân sự, thư ký nghiệp vụ và nhân viên của Văn phòng Thi hành án dân sự Quảng Ngãi.`,
+  alternates: { canonical: "/doi-ngu" },
 };
 
 export default function TeamPage() {
@@ -22,7 +25,7 @@ export default function TeamPage() {
         }
         className="pb-28 md:pb-32"
       >
-        Đội ngũ nhiều năm kinh nghiệm thực tiễn cùng tinh thần làm việc tận tâm đến cùng.
+        Thừa hành viên giàu kinh nghiệm cùng đội ngũ đã qua đào tạo nghiệp vụ, làm việc tận tâm và đúng quy định pháp luật.
       </DarkPageHero>
       <div className="container-site -mt-16 md:-mt-20">
         <div className="mx-auto max-w-[1100px] rounded-t-lg bg-white px-4 pt-8 md:rounded-t-xl md:pt-10">
@@ -31,15 +34,42 @@ export default function TeamPage() {
       </div>
 
       <section className="section-y">
-        <div className="container-site grid grid-cols-2 gap-3 md:gap-5 lg:grid-cols-4">
-          {team.map((m, i) => (
-            <Reveal key={m.slug}>
-              <MemberCard member={m} priority={i < 4} />
-            </Reveal>
-          ))}
+        <div className="container-site grid items-center gap-10 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
+          <Reveal className="mx-auto w-full max-w-sm">
+            <MemberCard member={head} priority />
+          </Reveal>
+          <Reveal>
+            <PreTitle>{head.title}</PreTitle>
+            <h2 className="mt-3 text-[2.5rem] leading-tight md:text-[3.375rem]">{head.name}</h2>
+            <p className="mt-1 text-heading md:text-lg">{head.role}</p>
+            <p className="mt-5 md:text-lg">{head.intro}</p>
+            <ButtonLink href={`/doi-ngu/${head.slug}`} className="mt-8">
+              Xem hồ sơ
+            </ButtonLink>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-cream section-y">
+        <div className="container-site">
+          <h2 data-reveal className="text-center text-[2.5rem] md:text-[3.375rem]">
+            Đội ngũ <Accent>chuyên môn</Accent>
+          </h2>
+          <div className="mt-10 grid gap-5 md:mt-12 md:grid-cols-3">
+            {teamGroups.map((g) => (
+              <Reveal key={g.title} className="rounded-md bg-white p-6 md:p-8">
+                <span className="grid size-8 place-items-center rounded-xxs border border-line bg-cream">
+                  <StarFilled className="size-4 text-accent" />
+                </span>
+                <h3 className="mt-4 font-sans text-xl font-medium">{g.title}</h3>
+                <p className="mt-2 text-base">{g.text}</p>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
       <CtaBanner />
+      <JsonLd data={breadcrumbSchema([{ name: "Đội ngũ", path: "/doi-ngu" }])} />
     </>
   );
 }

@@ -4,6 +4,7 @@ import { ScrollEffects } from "@/components/scroll-effects";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { office } from "@/content/site";
+import { JsonLd, absoluteUrl, organizationSchema, websiteSchema } from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({
@@ -22,17 +23,23 @@ const serif = Newsreader({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(absoluteUrl("/")),
   title: {
-    default: `${office.name} – ${office.slogan}`,
+    default: `${office.name} – Thừa hành viên (Thừa phát lại) Quảng Ngãi`,
     template: `%s | ${office.shortName}`,
   },
-  description: office.fullName,
+  description: office.description,
+  applicationName: office.name,
+  alternates: { canonical: "/" },
   openGraph: {
     title: office.name,
-    description: office.slogan,
+    description: office.description,
+    siteName: office.name,
     locale: "vi_VN",
     type: "website",
+    images: [{ url: "/images/hero.webp", alt: office.name }],
   },
+  formatDetection: { telephone: false },
 };
 
 export const viewport: Viewport = {
@@ -50,6 +57,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script dangerouslySetInnerHTML={{ __html: revealScript }} />
       </head>
       <body className="min-h-full font-sans">
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />

@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { LegalPage } from "@/components/legal-page";
 import { office } from "@/content/site";
 
-export const metadata: Metadata = { title: "Điều khoản sử dụng" };
+export const metadata: Metadata = { title: "Điều khoản sử dụng", alternates: { canonical: "/dieu-khoan" } };
 
 // MẪU: have the office's legal team review this text before launch.
 export default function TermsPage() {
   return (
     <LegalPage
       title="Điều khoản sử dụng"
-      updated="01/2026"
+      updated="09/2026"
       intro={`Khi truy cập và sử dụng website của ${office.name}, bạn đồng ý với các điều khoản dưới đây. Vui lòng đọc kỹ trước khi sử dụng.`}
       sections={[
         {

@@ -33,16 +33,6 @@ export function StarFilled({ className }: IconProps) {
   );
 }
 
-export function Stars({ count = 5, className }: IconProps & { count?: number }) {
-  return (
-    <span className={`flex gap-0.5 text-accent ${className ?? ""}`}>
-      {Array.from({ length: count }, (_, i) => (
-        <StarFilled key={i} className="size-4" />
-      ))}
-    </span>
-  );
-}
-
 export function ChevronDown({ className }: IconProps) {
   return (
     <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" className={className}>
@@ -131,10 +121,10 @@ export function Social({ name, className }: IconProps & { name: string }) {
       </svg>
     );
   }
-  if (name === "youtube") {
+  if (name === "tiktok") {
     return (
       <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" className={className}>
-        <path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15V9l5.2 3Z" />
+        <path d="M16.6 3h-3.1v12.1a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.4a5.8 5.8 0 1 0 4.9 5.7V9a7.6 7.6 0 0 0 4.4 1.4V7.3A4.4 4.4 0 0 1 16.6 3Z" />
       </svg>
     );
   }

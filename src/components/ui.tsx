@@ -55,8 +55,8 @@ export function ButtonLink({ children, size = "md", variant = "accent", classNam
   );
 }
 
-/** "2022 – 2026 / Văn phòng tiêu biểu" with a laurel, used in the hero and the footer. */
-export function AwardBadge({ tone = "dark", className = "" }: { tone?: "dark" | "light"; className?: string }) {
+/** "14 năm hành nghề / Thừa hành viên" with a laurel, used in the hero and the footer. */
+export function CredentialBadge({ tone = "dark", className = "" }: { tone?: "dark" | "light"; className?: string }) {
   return (
     <div className={`flex items-center gap-3 ${className}`}>
       <Image
@@ -67,8 +67,8 @@ export function AwardBadge({ tone = "dark", className = "" }: { tone?: "dark" | 
         className="h-[30px] w-auto"
       />
       <div className={`leading-tight ${tone === "dark" ? "text-heading" : "text-white"}`}>
-        <p className={`text-sm ${tone === "dark" ? "text-body" : "text-white/80"}`}>{office.award.years}</p>
-        <p className={tone === "light" ? "font-semibold" : ""}>{office.award.title}</p>
+        <p className={`text-sm ${tone === "dark" ? "text-body" : "text-white/80"}`}>{office.credential.top}</p>
+        <p className={tone === "light" ? "font-semibold" : ""}>{office.credential.title}</p>
       </div>
     </div>
   );

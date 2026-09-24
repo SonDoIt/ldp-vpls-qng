@@ -6,7 +6,7 @@ import { ChevronDown, Sparkle } from "./icons";
 import { Reveal } from "./reveal";
 import { Accent, ButtonLink, ImageFade, PreTitle } from "./ui";
 
-/** "10+ / 98% / 2.000+" with numerals fading from orange to nothing. */
+/** "21 / 14 / 4" with numerals fading from orange to nothing. */
 export function Stats({ size = "lg", className = "" }: { size?: "lg" | "md"; className?: string }) {
   return (
     <dl className={`mx-auto grid max-w-4xl grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6 ${className}`}>
@@ -26,10 +26,10 @@ export function Stats({ size = "lg", className = "" }: { size?: "lg" | "md"; cla
   );
 }
 
-/** Four numbered steps on a cream band. */
+/** The six numbered working steps on a cream band. */
 export function ProcessSteps() {
   return (
-    <ol className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+    <ol className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-14">
       {steps.map((step, i) => (
         <Reveal as="li" key={step.title} className="flex flex-col items-center text-center">
             <span className="text-fade-accent text-[4.5rem] leading-none tracking-tight md:text-[6.25rem]">
@@ -90,7 +90,7 @@ export function ConsultationSection() {
           <ImageFade to="cream" />
           <div className="relative z-[2] grid grid-cols-1 gap-4 px-4 pb-8 text-center sm:grid-cols-2">
             <div>
-              <p className="text-sm text-heading">Gọi cho chúng tôi</p>
+              <p className="text-sm text-heading">Điện thoại / Zalo</p>
               <a href={office.phoneHref} className="text-xl text-heading hover:text-accent md:text-[1.375rem]">
                 {office.phone}
               </a>
@@ -104,7 +104,7 @@ export function ConsultationSection() {
           </div>
         </Reveal>
         <Reveal>
-          <FramedPanel label="Cam kết phản hồi trong 1 ngày làm việc" title="Đặt lịch tư vấn" className="h-full">
+          <FramedPanel label={`Tiếp nhận yêu cầu ${office.workdays}`} title="Gửi yêu cầu tư vấn" className="h-full">
             <ContactForm />
           </FramedPanel>
         </Reveal>
@@ -159,9 +159,9 @@ export function FaqSection({ layout = "split" }: { layout?: "split" | "center" }
           </h2>
           <div data-reveal>
             <p className="text-xl text-heading">Vẫn còn thắc mắc? Hãy trao đổi với chúng tôi</p>
-            <p className="mt-1 text-base">Nhận giải đáp rõ ràng và hướng dẫn pháp lý ngay hôm nay.</p>
+            <p className="mt-1 text-base">Thừa hành viên sẽ giải đáp và hướng dẫn thủ tục cụ thể cho trường hợp của bạn.</p>
             <ButtonLink href="/lien-he" className="mt-6">
-              Đặt lịch tư vấn miễn phí
+              Gửi yêu cầu tư vấn
             </ButtonLink>
           </div>
         </div>
@@ -195,11 +195,11 @@ export function CtaBanner() {
               đến <Accent>công bằng</Accent> cùng chúng tôi.
             </h2>
             <p data-reveal className="mt-6 max-w-lg text-base md:text-lg">
-              Hãy chia sẻ tình huống của bạn, chúng tôi sẽ kết nối bạn với chấp hành viên phù hợp — không
-              ràng buộc, hoàn toàn bảo mật.
+              Hãy chia sẻ tình huống của bạn. Thừa hành viên sẽ trao đổi và tư vấn phương án phù hợp theo
+              quy định pháp luật, bảo mật thông tin của bạn.
             </p>
             <ButtonLink data-reveal href="/lien-he" className="mt-8">
-              Đặt lịch tư vấn miễn phí
+              Gửi yêu cầu tư vấn
             </ButtonLink>
             <ul data-reveal className="mt-10 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm md:text-base">
               <li className="flex items-center gap-1.5">
@@ -208,7 +208,7 @@ export function CtaBanner() {
               </li>
               <li className="flex items-center gap-1.5">
                 <Sparkle className="size-3 text-heading" />
-                98% hồ sơ hoàn tất đúng hạn
+                Chi phí thống nhất trước khi thực hiện
               </li>
             </ul>
           </div>

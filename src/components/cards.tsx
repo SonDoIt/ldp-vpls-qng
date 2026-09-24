@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { CaseStudy, Member, Service } from "@/content/site";
+import type { Article, Member, Service } from "@/content/site";
 import { ImageFade } from "./ui";
 
 /** Tall photo card whose image dissolves into white behind a centred title. */
@@ -49,31 +49,29 @@ export function MemberCard({ member, priority = false }: { member: Member; prior
   );
 }
 
-/** Horizontal case card: photo left, practice-area chip, title and outcome right. */
-export function CaseCard({ item }: { item: CaseStudy }) {
+/** Horizontal article card: photo left, category chip, title and summary right. */
+export function ArticleCard({ item }: { item: Article }) {
   return (
     <Link
-      href={`/vu-viec/${item.slug}`}
+      href={`/kien-thuc/${item.slug}`}
       className="group flex h-full flex-col gap-4 rounded-lg bg-cream p-2.5 transition-colors duration-300 hover:bg-sand sm:flex-row md:gap-6"
     >
-      <div className="relative aspect-[318/269] shrink-0 overflow-hidden rounded-md sm:w-[47%]">
+      <div className="relative aspect-[318/269] shrink-0 overflow-hidden rounded-md sm:w-[42%]">
         <Image
           src={item.image}
           alt=""
           fill
-          sizes="(min-width: 64rem) 25vw, (min-width: 40rem) 45vw, 90vw"
+          sizes="(min-width: 64rem) 22vw, (min-width: 40rem) 40vw, 90vw"
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
       </div>
       <div className="flex flex-1 flex-col justify-between gap-6 px-2 pt-1 pb-3 sm:px-0 sm:pr-4">
         <div>
-          <span className="inline-block rounded-full bg-line px-3 py-1 text-xs text-heading">{item.area}</span>
+          <span className="inline-block rounded-full bg-line px-3 py-1 text-xs text-heading">{item.category}</span>
           <h3 className="mt-4 text-2xl leading-tight md:text-[1.75rem]">{item.title}</h3>
+          <p className="mt-3 line-clamp-3 text-base">{item.description}</p>
         </div>
-        <div className="text-sm">
-          <p>Kết quả:</p>
-          <p className="mt-0.5 text-base font-medium text-heading">{item.outcome}</p>
-        </div>
+        <p className="text-sm text-heading underline-offset-4 group-hover:underline">Đọc bài viết</p>
       </div>
     </Link>
   );

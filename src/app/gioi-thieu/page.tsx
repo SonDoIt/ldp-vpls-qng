@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { MemberCard } from "@/components/cards";
-import { Plus, Social, Sparkle, StarFilled } from "@/components/icons";
-import { Marquee } from "@/components/marquee";
+import { Plus, Social, StarFilled } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
 import { CtaBanner, Stats } from "@/components/sections";
 import { Accent, ImageFade, PreTitle } from "@/components/ui";
-import { awards, checklist, founder, office, story, team, values } from "@/content/site";
+import { about, head, office, officeFacts, story, teamGroups, values } from "@/content/site";
+import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Giới thiệu",
-  description: `Về ${office.name}: sứ mệnh, đội ngũ và những giá trị chúng tôi theo đuổi.`,
+  description: `${about.intro} Trưởng Văn phòng: Thừa hành viên ${office.head}.`,
+  alternates: { canonical: "/gioi-thieu" },
 };
 
 function Hero() {
@@ -44,32 +44,30 @@ function WhoWeAre() {
           <Reveal>
             <PreTitle>Chúng tôi là ai</PreTitle>
             <div className="mt-4 flex flex-col gap-5 text-base md:text-lg">
+              <p>{about.intro}</p>
+              <p>{about.model}</p>
               <p>
-                {office.name} được thành lập từ một niềm tin giản dị: người dân và doanh nghiệp đều xứng đáng được
-                hỗ trợ thi hành án tận tâm, nhanh chóng và minh bạch. Chúng tôi xây dựng Văn phòng trên nền tảng
-                đúng pháp luật, sự rõ ràng và trách nhiệm với từng hồ sơ.
-              </p>
-              <p>
-                Hôm nay, Văn phòng đồng hành cùng khách hàng ở nhiều lĩnh vực: từ những vụ việc gia đình cần sự tinh
-                tế đến các hồ sơ tín dụng, thương mại có giá trị lớn. Mỗi hồ sơ đều nhận được cùng một mức độ chuẩn
-                bị và tận tâm.
+                Với tinh thần tận tâm và trách nhiệm, Văn phòng đồng hành cùng khách hàng trong việc tạo lập, bảo vệ
+                chứng cứ, thực hiện các thủ tục pháp lý và hạn chế những rủi ro có thể phát sinh trong các quan hệ
+                dân sự, kinh doanh và đời sống.
               </p>
             </div>
           </Reveal>
           <Reveal>
             <blockquote className="rounded-md bg-sand p-5 md:p-6">
               <p className="border-l-2 border-accent pl-4 font-serif text-xl leading-snug text-heading md:text-2xl">
-                Văn phòng tốt nhất không phải là nơi lớn nhất, mà là nơi tận tâm nhất với người đang cần được giúp đỡ.
+                {office.slogan}.
               </p>
             </blockquote>
-            <ul className="mt-6 flex flex-col gap-2.5">
-              {checklist.map((c) => (
-                <li key={c} className="flex items-center gap-2.5 md:text-lg">
-                  <Sparkle className="size-3 shrink-0 text-heading" />
-                  {c}
-                </li>
+            <h2 className="mt-8 font-sans text-lg font-medium md:text-xl">Thông tin Văn phòng</h2>
+            <dl className="mt-2">
+              {officeFacts.map((f) => (
+                <div key={f.label} className="grid gap-1 border-b border-line py-3 last:border-0 sm:grid-cols-[10rem_1fr] sm:gap-4">
+                  <dt className="text-sm">{f.label}</dt>
+                  <dd className="text-heading">{f.value}</dd>
+                </div>
               ))}
-            </ul>
+            </dl>
           </Reveal>
         </div>
         <Stats className="mt-20 md:mt-28" />
@@ -84,12 +82,12 @@ function Founder() {
       <div className="mx-auto max-w-[1660px] rounded-lg bg-cream section-y md:rounded-xl">
         <div className="container-site grid items-center gap-10 lg:grid-cols-[1fr_0.9fr_1fr] lg:gap-12">
           <Reveal>
-            <PreTitle>Người sáng lập</PreTitle>
-            <h2 className="mt-3 text-[2.5rem] leading-tight md:text-[3.375rem]">{founder.name}</h2>
-            <p className="mt-4 md:text-lg">{founder.bio}</p>
-            <p className="mt-6 text-sm text-heading">Chức danh & hội nghề nghiệp</p>
+            <PreTitle>Trưởng Văn phòng</PreTitle>
+            <h2 className="mt-3 text-[2.5rem] leading-tight md:text-[3.375rem]">{head.name}</h2>
+            <p className="mt-4 md:text-lg">{head.intro}</p>
+            <p className="mt-6 text-sm text-heading">Chức danh</p>
             <ul className="mt-3 flex flex-wrap gap-2">
-              {founder.memberships.map((m) => (
+              {[head.title, head.role].map((m) => (
                 <li key={m} className="rounded-xs border border-line bg-white px-3 py-1.5 text-sm text-heading">
                   {m}
                 </li>
@@ -98,14 +96,16 @@ function Founder() {
           </Reveal>
           <Reveal className="mx-auto w-full max-w-sm">
             <div className="relative aspect-[5/5.2] overflow-hidden rounded-t-md">
-              <Image src={founder.image} alt={founder.name} fill sizes="(min-width: 64rem) 25vw, 90vw" className="object-cover" />
+              <Image src={head.image} alt={`${head.title} ${head.name}`} fill sizes="(min-width: 64rem) 25vw, 90vw" className="object-cover" />
               <ImageFade to="cream" className="h-[40%]" />
               <ul className="absolute inset-x-0 bottom-3 z-[2] flex justify-center gap-2">
                 {office.socials.map((s) => (
                   <li key={s.label}>
                     <a
                       href={s.href}
-                      aria-label={s.label}
+                      aria-label={`${s.label}: ${s.handle}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="grid size-8 place-items-center rounded-xxs bg-white text-heading transition-colors hover:bg-accent"
                     >
                       <Social name={s.icon} className="size-4" />
@@ -116,9 +116,9 @@ function Founder() {
             </div>
           </Reveal>
           <Reveal>
-            <h3 className="text-[1.875rem]">Trình độ chuyên môn</h3>
+            <h3 className="text-[1.875rem]">Học vấn & kinh nghiệm</h3>
             <ol className="mt-5">
-              {founder.qualifications.map((q, i) => (
+              {[`${head.education.degree} – ${head.education.school}`, ...head.experience].map((q, i) => (
                 <li key={q} className="flex items-start gap-3 border-b border-line py-4 md:text-lg">
                   <span className="grid size-6 shrink-0 place-items-center rounded-full bg-white text-xs text-heading">
                     {String(i + 1).padStart(2, "0")}
@@ -141,15 +141,17 @@ function TeamSection() {
         <div className="flex flex-col items-center text-center">
           <PreTitle data-reveal>Gặp gỡ đội ngũ</PreTitle>
           <h2 data-reveal className="mt-3 text-[2.5rem] leading-[1.15] md:text-[3.375rem]">
-            Đội ngũ chấp hành viên
-            <br />
-            <Accent>giàu kinh nghiệm</Accent>
+            Đội ngũ <Accent>chuyên môn</Accent>
           </h2>
         </div>
-        <div className="mt-12 grid grid-cols-2 gap-3 md:gap-5 lg:grid-cols-4">
-          {team.slice(0, 4).map((m) => (
-            <Reveal key={m.slug}>
-              <MemberCard member={m} />
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          {teamGroups.map((g) => (
+            <Reveal key={g.title} className="rounded-md bg-cream p-6 md:p-8">
+              <span className="grid size-8 place-items-center rounded-xxs border border-line bg-white">
+                <StarFilled className="size-4 text-accent" />
+              </span>
+              <h3 className="mt-4 font-sans text-xl font-medium">{g.title}</h3>
+              <p className="mt-2 text-base">{g.text}</p>
             </Reveal>
           ))}
         </div>
@@ -166,13 +168,13 @@ function Story() {
           <Image src="/images/about-story.webp" alt="" fill sizes="(min-width: 64rem) 45vw, 100vw" className="-z-10 object-cover" />
           <ImageFade to="white" />
           <p className="relative z-[2] mx-auto max-w-md font-serif text-2xl leading-snug text-heading md:text-[1.875rem]">
-            &ldquo;Nơi <Accent>tận tâm nhất</Accent> mới là nơi đáng tin cậy nhất.&rdquo;
+            &ldquo;<Accent>Tận tâm</Accent> trong từng giải pháp.&rdquo;
           </p>
         </Reveal>
         <Reveal>
-          <PreTitle>Điều làm nên khác biệt</PreTitle>
+          <PreTitle>Về chúng tôi</PreTitle>
           <h2 className="mt-3 text-[2.5rem] leading-[1.15] md:text-[3.375rem]">
-            Câu chuyện <Accent>phía sau</Accent> Văn phòng
+            Giới thiệu, sứ mệnh <Accent>&amp; tầm nhìn</Accent>
           </h2>
           <div className="mt-8 flex flex-col gap-2">
             {story.map((s, i) => (
@@ -222,20 +224,6 @@ function Values() {
             <ImageFade to="cream" className="h-[40%]" />
           </div>
         </div>
-        <Marquee duration={40} gap="2rem" className="mask-fade-x mt-16 md:mt-24">
-          {awards.map((a) => (
-            <div
-              key={a.title}
-              className="grid size-44 shrink-0 place-items-center rounded-full border-[8px] border-sand bg-white p-5 text-center md:size-52"
-            >
-              <div className="flex flex-col items-center gap-2">
-                <StarFilled className="size-5 text-accent" />
-                <p className="text-heading md:text-lg">{a.title}</p>
-                <p className="text-xs md:text-sm">{a.note}</p>
-              </div>
-            </div>
-          ))}
-        </Marquee>
       </div>
     </section>
   );
@@ -251,6 +239,7 @@ export default function AboutPage() {
       <Story />
       <Values />
       <CtaBanner />
+      <JsonLd data={breadcrumbSchema([{ name: "Giới thiệu", path: "/gioi-thieu" }])} />
     </>
   );
 }

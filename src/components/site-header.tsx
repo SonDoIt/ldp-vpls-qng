@@ -102,7 +102,7 @@ export function SiteHeader() {
             {/* Wrapped: ButtonLink's own inline-flex would beat a `hidden` passed in className. */}
             <span className="hidden sm:contents">
               <ButtonLink href="/lien-he" size="sm">
-                Đặt lịch tư vấn
+                Liên hệ tư vấn
               </ButtonLink>
             </span>
             <button
@@ -138,7 +138,7 @@ export function SiteHeader() {
               ))}
             </ul>
             <ButtonLink href="/lien-he" onClick={close} className="mt-3 w-full sm:hidden">
-              Đặt lịch tư vấn
+              Liên hệ tư vấn
             </ButtonLink>
           </nav>
         )}

@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ServiceCard } from "@/components/cards";
-import { Sparkle, StarFilled } from "@/components/icons";
+import { Sparkle } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
 import { ConsultationSection, FaqSection, ProcessSteps } from "@/components/sections";
-import { Accent, ImageFade } from "@/components/ui";
-import { checklist, rating, reviews, services } from "@/content/site";
+import { Accent, ImageFade, PreTitle } from "@/components/ui";
+import { checklist, office, services } from "@/content/site";
+import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Dịch vụ",
-  description: "Tổ chức thi hành án, xác minh điều kiện thi hành án, tống đạt, lập vi bằng, kê biên tài sản và tư vấn pháp lý.",
+  title: "Dịch vụ Thừa hành viên",
+  description: `${office.name} thực hiện 4 chức năng của Thừa hành viên: tống đạt, lập vi bằng, xác minh điều kiện thi hành án dân sự và tổ chức thi hành án dân sự tại Quảng Ngãi.`,
+  alternates: { canonical: "/dich-vu" },
 };
 
 export default function ServicesPage() {
@@ -31,27 +33,14 @@ export default function ServicesPage() {
             </div>
             <div className="flex flex-col justify-between gap-10 rounded-md bg-white p-5 md:rounded-lg md:p-8">
               <div>
-                <div data-reveal className="flex flex-wrap items-center gap-3">
-                  <div className="flex -space-x-2">
-                    {reviews.map((r) => (
-                      <Image
-                        key={r.name}
-                        src={r.avatar}
-                        alt=""
-                        width={32}
-                        height={32}
-                        className="size-8 rounded-full border-2 border-white object-cover"
-                      />
-                    ))}
-                  </div>
-                  <p className="flex items-center gap-1.5 text-sm text-heading">
-                    <StarFilled className="size-4 text-accent" />
-                    Đánh giá {rating.score}/5 từ {rating.count}
-                  </p>
-                </div>
+                <PreTitle data-reveal>4 chức năng của Thừa hành viên</PreTitle>
                 <h1 data-reveal className="mt-5 text-[2.5rem] leading-[1.15] md:text-[3.25rem]">
-                  <Accent>Dịch vụ</Accent> xây dựng trên kinh nghiệm và <Accent>niềm tin</Accent>
+                  <Accent>Dịch vụ</Accent> Thừa hành viên tại Quảng Ngãi
                 </h1>
+                <p data-reveal className="mt-4 md:text-lg">
+                  Văn phòng thực hiện tống đạt, lập vi bằng, xác minh điều kiện thi hành án dân sự và tổ chức thi
+                  hành án dân sự theo đúng quy định pháp luật.
+                </p>
               </div>
               <ul data-reveal className="flex flex-col gap-2">
                 {checklist.map((c) => (
@@ -67,7 +56,7 @@ export default function ServicesPage() {
       </section>
 
       <section className="section-y">
-        <div className="container-site grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="container-site grid gap-5 md:grid-cols-2">
           {services.map((s) => (
             <Reveal key={s.slug}>
               <ServiceCard service={s} />
@@ -78,11 +67,15 @@ export default function ServicesPage() {
 
       <section className="bg-cream section-y">
         <div className="container-site">
+          <h2 data-reveal className="mb-12 text-center text-[2.5rem] leading-[1.15] md:mb-16 md:text-[3.375rem]">
+            Quy trình <Accent>làm việc</Accent>
+          </h2>
           <ProcessSteps />
         </div>
       </section>
       <ConsultationSection />
       <FaqSection />
+      <JsonLd data={breadcrumbSchema([{ name: "Dịch vụ", path: "/dich-vu" }])} />
     </>
   );
 }

@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import type { ReactNode } from "react";
 import { ContactForm } from "@/components/contact-form";
-import { Clock, Mail, MapPin, Phone } from "@/components/icons";
+import { Clock, Mail, MapPin, Phone, Social } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
 import { FaqSection, FramedPanel } from "@/components/sections";
-import { Accent, ImageFade, PreTitle } from "@/components/ui";
-import { office, offices } from "@/content/site";
+import { Accent, PreTitle } from "@/components/ui";
+import { office } from "@/content/site";
+import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Liên hệ",
-  description: `Liên hệ ${office.name}: điện thoại ${office.phone}, email ${office.email}.`,
+  description: `Liên hệ ${office.name}: ${office.address}. Điện thoại/Zalo ${office.phone}, email ${office.email}. Làm việc ${office.hours}.`,
+  alternates: { canonical: "/lien-he" },
 };
 
 function ContactItem({ icon, label, children, note }: { icon: ReactNode; label: string; children: ReactNode; note?: string }) {
@@ -26,10 +27,6 @@ function ContactItem({ icon, label, children, note }: { icon: ReactNode; label: 
   );
 }
 
-function directionsHref(address: string) {
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
-}
-
 export default function ContactPage() {
   return (
     <>
@@ -43,34 +40,58 @@ export default function ContactPage() {
         <div className="relative container-site grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
           <div className="flex flex-col justify-between gap-10">
             <h1 data-reveal className="text-[2.75rem] leading-[1.1] md:text-[4rem]">
-              Hãy bắt đầu
+              Liên hệ Văn phòng
               <br />
-              <Accent>cuộc trò chuyện</Accent>
+              <Accent>Thi hành án dân sự Quảng Ngãi</Accent>
             </h1>
             <div data-reveal>
               <PreTitle>Liên hệ trực tiếp</PreTitle>
               <ul className="mt-2">
-                <ContactItem icon={<Phone className="size-4" />} label="Gọi cho chúng tôi" note={office.hours}>
+                <ContactItem icon={<Phone className="size-4" />} label="Điện thoại / Zalo">
                   <a href={office.phoneHref} className="hover:text-accent">
                     {office.phone}
                   </a>
+                  <a href={office.zaloHref} target="_blank" rel="noopener noreferrer" className="ml-3 text-sm underline underline-offset-4 hover:text-accent">
+                    Nhắn Zalo
+                  </a>
                 </ContactItem>
-                <ContactItem icon={<Mail className="size-4" />} label="Gửi email" note="Phản hồi trong 1 ngày làm việc">
+                <ContactItem icon={<Mail className="size-4" />} label="Email">
                   <a href={`mailto:${office.email}`} className="break-all hover:text-accent">
                     {office.email}
                   </a>
                 </ContactItem>
-                <ContactItem icon={<MapPin className="size-4" />} label="Địa chỉ">
-                  {office.address}
+                <ContactItem icon={<MapPin className="size-4" />} label="Trụ sở">
+                  <a href={office.mapsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+                    {office.address}
+                  </a>
                 </ContactItem>
-                <ContactItem icon={<Clock className="size-4" />} label="Giờ làm việc">
-                  {office.timing}
+                <ContactItem icon={<Clock className="size-4" />} label={`Giờ làm việc (${office.workdays})`}>
+                  {office.sessions.map((s) => (
+                    <span key={s.label} className="block">
+                      {s.label}: {s.time}
+                    </span>
+                  ))}
                 </ContactItem>
+              </ul>
+              <ul className="mt-4 flex flex-wrap gap-2.5">
+                {office.socials.map((s) => (
+                  <li key={s.label}>
+                    <a
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 rounded-xs border border-line px-3 py-2 text-sm text-heading transition-colors hover:bg-accent"
+                    >
+                      <Social name={s.icon} className="size-4" />
+                      {s.label}: {s.handle}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
           <Reveal>
-            <FramedPanel label="Cam kết phản hồi trong 1 ngày làm việc" title="Đặt lịch tư vấn">
+            <FramedPanel label={`Tiếp nhận yêu cầu ${office.workdays}`} title="Gửi yêu cầu tư vấn">
               <ContactForm />
             </FramedPanel>
           </Reveal>
@@ -80,42 +101,36 @@ export default function ContactPage() {
       <section className="bg-cream section-y">
         <div className="container-site">
           <div className="flex flex-col items-center text-center">
-            <PreTitle data-reveal>Hệ thống văn phòng</PreTitle>
+            <PreTitle data-reveal>Trụ sở Văn phòng</PreTitle>
             <h2 data-reveal className="mt-3 text-[2.5rem] md:text-[3.375rem]">
-              Tìm chúng tôi <Accent>gần bạn</Accent>
+              Đường đến <Accent>Văn phòng</Accent>
             </h2>
+            <p data-reveal className="mt-3 md:text-lg">{office.address}</p>
           </div>
-          <div className="mt-10 grid gap-5 md:mt-12 md:grid-cols-2 lg:grid-cols-3">
-            {offices.map((o, i) => (
-              <Reveal
-                key={o.city}
-               
-                className={`relative isolate flex min-h-[20rem] flex-col items-center justify-end overflow-hidden rounded-t-lg px-5 pt-40 pb-1 text-center md:min-h-[26rem] ${
-                  i === 2 ? "md:col-span-2 lg:col-span-1" : ""
-                }`}
-              >
-                <Image src={o.image} alt="" fill sizes="(min-width: 64rem) 30vw, (min-width: 48rem) 50vw, 100vw" className="-z-10 object-cover" />
-                <ImageFade to="cream" />
-                <div className="relative z-[2] flex flex-col items-center">
-                  <p className="text-sm text-heading">{o.label}</p>
-                  <h3 className="mt-1 text-[1.75rem] md:text-[2rem]">{o.city}</h3>
-                  <p className="mt-2 max-w-xs text-sm">{o.address}</p>
-                  <a
-                    href={directionsHref(o.address)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-4 rounded-xxs border border-line bg-white px-4 py-1.5 text-sm text-heading transition-colors hover:bg-accent"
-                  >
-                    Chỉ đường
-                  </a>
-                </div>
-              </Reveal>
-            ))}
+          <div data-reveal className="mt-10 overflow-hidden rounded-lg border border-line bg-white md:mt-12 md:rounded-xl">
+            <iframe
+              src={office.mapsEmbedUrl}
+              title={`Bản đồ ${office.name}`}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="block aspect-[4/3] w-full md:aspect-[16/7]"
+            />
+          </div>
+          <div className="mt-6 flex justify-center">
+            <a
+              href={office.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-xxs border border-line bg-white px-4 py-2 text-sm text-heading transition-colors hover:bg-accent"
+            >
+              Chỉ đường trên Google Maps
+            </a>
           </div>
         </div>
       </section>
 
       <FaqSection layout="center" />
+      <JsonLd data={breadcrumbSchema([{ name: "Liên hệ", path: "/lien-he" }])} />
     </>
   );
 }
