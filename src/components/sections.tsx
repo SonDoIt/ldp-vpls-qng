@@ -1,10 +1,10 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
-import { faqs, office, stats, steps } from "@/content/site";
+import { faqs, head, office, stats, steps } from "@/content/site";
 import { ContactForm } from "./contact-form";
 import { ChevronDown, Sparkle } from "./icons";
 import { Reveal } from "./reveal";
-import { Accent, ButtonLink, ImageFade, PreTitle } from "./ui";
+import { Accent, ButtonLink, PreTitle } from "./ui";
 
 /** "21 / 14 / 4" with numerals fading from orange to nothing. */
 export function Stats({ size = "lg", className = "" }: { size?: "lg" | "md"; className?: string }) {
@@ -74,30 +74,43 @@ export function FramedPanel({
   );
 }
 
-/** Photo with phone/email under it, beside the consultation form (home, services). */
+/**
+ * The office photo, sign to desk, with phone/email under it, beside the consultation form (home,
+ * services). The photo column is the wider one so the head of office reads clearly without losing the sign.
+ */
 export function ConsultationSection() {
   return (
     <section className="bg-cream section-y">
-      <div className="container-site grid items-stretch gap-8 lg:grid-cols-2 lg:gap-10">
-        <Reveal className="relative isolate flex min-h-[26rem] flex-col justify-end overflow-hidden rounded-t-lg md:min-h-[36rem] md:rounded-t-xl">
-          <Image
-            src="/images/office.webp"
-            alt=""
-            fill
-            sizes="(min-width: 64rem) 45vw, 100vw"
-            className="-z-10 object-cover"
-          />
-          <ImageFade to="cream" />
-          <div className="relative z-[2] grid grid-cols-1 gap-4 px-4 pb-8 text-center sm:grid-cols-2">
+      <div className="container-site grid items-stretch gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-10">
+        <Reveal className="on-dark flex flex-col overflow-hidden rounded-lg bg-heading md:rounded-xl">
+          {/* Crops the source's outer margins (4% left/right, 3% top, 9% bottom): the box takes the kept
+              area's aspect ratio and the image is offset inside it, so the crop holds at every width. */}
+          <div className="relative aspect-[1472/1056] overflow-hidden">
+            <Image
+              src="/images/office.webp"
+              alt={`${head.name}, ${head.role}, tại ${office.name}`}
+              width={1600}
+              height={1200}
+              sizes="(min-width: 64rem) 62vw, 110vw"
+              className="absolute top-[-3.41%] left-[-4.35%] h-auto w-[108.7%] max-w-none"
+            />
+            <p className="absolute bottom-4 left-4 rounded-full bg-white/90 px-3.5 py-1.5 text-sm text-heading shadow-sm backdrop-blur">
+              {head.name} · {head.role}
+            </p>
+          </div>
+          <div className="grid flex-1 grid-cols-1 content-center gap-4 px-6 py-6 text-center sm:grid-cols-[1fr_1.4fr]">
             <div>
-              <p className="text-sm text-heading">Điện thoại / Zalo</p>
-              <a href={office.phoneHref} className="text-xl text-heading hover:text-accent-ink md:text-[1.375rem]">
+              <p className="text-sm text-white/65">Điện thoại / Zalo</p>
+              <a href={office.phoneHref} className="text-xl text-white hover:text-accent-ink md:text-[1.375rem]">
                 {office.phone}
               </a>
             </div>
-            <div>
-              <p className="text-sm text-heading">Gửi email</p>
-              <a href={`mailto:${office.email}`} className="text-xl break-all text-heading hover:text-accent-ink md:text-[1.375rem]">
+            <div className="min-w-0">
+              <p className="text-sm text-white/65">Gửi email</p>
+              <a
+                href={`mailto:${office.email}`}
+                className="text-lg [overflow-wrap:anywhere] text-white hover:text-accent-ink md:text-xl"
+              >
                 {office.email}
               </a>
             </div>
