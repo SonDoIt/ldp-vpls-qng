@@ -38,17 +38,18 @@ export default async function MemberPage({ params }: PageProps<"/doi-ngu/[slug]"
     <>
       <section className="pt-24 md:pt-28">
         <div className="container-site grid items-start gap-5 lg:grid-cols-[1fr_2.05fr]">
-          <div data-reveal className="relative mx-auto aspect-[310/366] w-full max-w-md overflow-hidden rounded-lg lg:sticky lg:top-28">
+          <div className="relative mx-auto aspect-[310/366] w-full max-w-md overflow-hidden rounded-lg lg:sticky lg:top-28">
             <Image
               src={member.image}
               alt={`${member.title} ${member.name}`}
               fill
-              priority
+              loading="eager"
+              fetchPriority="high"
               sizes="(min-width: 64rem) 30vw, 90vw"
               className="object-cover"
             />
           </div>
-          <div data-reveal className="rounded-lg bg-sand p-2 md:rounded-xl md:p-2.5">
+          <div className="rounded-lg bg-sand p-2 md:rounded-xl md:p-2.5">
             <article className="rounded-md bg-white p-5 md:rounded-lg md:p-10">
               <span className="inline-block rounded-full bg-line px-3 py-1 text-sm text-heading">
                 {member.title} · {member.role}
@@ -108,7 +109,7 @@ export default async function MemberPage({ params }: PageProps<"/doi-ngu/[slug]"
             {teamGroups.map((g) => (
               <Reveal key={g.title} className="rounded-md bg-cream p-6 md:p-8">
                 <span className="grid size-8 place-items-center rounded-xxs border border-line bg-white">
-                  <StarFilled className="size-4 text-accent" />
+                  <StarFilled className="size-4 text-accent-ink" />
                 </span>
                 <h3 className="mt-4 font-sans text-xl font-medium">{g.title}</h3>
                 <p className="mt-2 text-base">{g.text}</p>

@@ -41,7 +41,7 @@ function InfoRow({ icon, label, children }: { icon: ReactNode; label: string; ch
     <div>
       <p className="text-heading">{label}</p>
       <div className="mt-2.5 flex items-center gap-3">
-        <span className="grid size-9 shrink-0 place-items-center rounded-xxs bg-sand text-accent">{icon}</span>
+        <span className="grid size-9 shrink-0 place-items-center rounded-xxs bg-sand text-accent-ink">{icon}</span>
         {children}
       </div>
     </div>
@@ -60,15 +60,16 @@ export default async function ServicePage({ params }: PageProps<"/dich-vu/[slug]
       <section className="pt-32 md:pt-36">
         <div className="container-site">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 data-reveal className="text-[2.5rem] leading-[1.15] md:text-[3.75rem]">{service.title}</h1>
+            <h1 className="text-[2.5rem] leading-[1.15] md:text-[3.75rem]">{service.title}</h1>
             <p data-reveal className="mt-3 md:text-lg">{service.summary}</p>
           </div>
-          <div data-reveal className="relative mt-10 aspect-[4/3] overflow-hidden rounded-lg sm:aspect-[16/8] md:rounded-xl">
+          <div className="relative mt-10 aspect-[4/3] overflow-hidden rounded-lg sm:aspect-[16/8] md:rounded-xl">
             <Image
               src="/images/services/service-detail.webp"
               alt=""
               fill
-              priority
+              loading="eager"
+              fetchPriority="high"
               sizes="(min-width: 1420px) 1360px, 100vw"
               className="object-cover"
             />
@@ -123,7 +124,7 @@ export default async function ServicePage({ params }: PageProps<"/dich-vu/[slug]
                 <ul className="mt-4 flex flex-col gap-2">
                   {related.map((a) => (
                     <li key={a.slug}>
-                      <Link href={`/kien-thuc/${a.slug}`} className="text-heading underline underline-offset-4 hover:text-accent">
+                      <Link href={`/kien-thuc/${a.slug}`} className="text-heading underline underline-offset-4 hover:text-accent-ink">
                         {a.title}
                       </Link>
                     </li>
@@ -137,7 +138,7 @@ export default async function ServicePage({ params }: PageProps<"/dich-vu/[slug]
             <SideCard title="Liên hệ">
               <div className="flex flex-col gap-6">
                 <InfoRow icon={<Phone className="size-4" />} label="Điện thoại / Zalo">
-                  <a href={office.phoneHref} className="text-heading hover:text-accent">
+                  <a href={office.phoneHref} className="text-heading hover:text-accent-ink">
                     {office.phone}
                   </a>
                 </InfoRow>

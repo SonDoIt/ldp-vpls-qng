@@ -25,7 +25,8 @@ export default function ServicesPage() {
                 src="/images/services/services-hero.webp"
                 alt=""
                 fill
-                priority
+                loading="eager"
+                fetchPriority="high"
                 sizes="(min-width: 48rem) 50vw, 100vw"
                 className="-z-10 object-cover"
               />
@@ -34,7 +35,7 @@ export default function ServicesPage() {
             <div className="flex flex-col justify-between gap-10 rounded-md bg-white p-5 md:rounded-lg md:p-8">
               <div>
                 <PreTitle data-reveal>4 chức năng của Thừa hành viên</PreTitle>
-                <h1 data-reveal className="mt-5 text-[2.5rem] leading-[1.15] md:text-[3.25rem]">
+                <h1 className="mt-5 text-[2.5rem] leading-[1.15] md:text-[3.25rem]">
                   <Accent>Dịch vụ</Accent> Thừa hành viên tại Quảng Ngãi
                 </h1>
                 <p data-reveal className="mt-4 md:text-lg">
@@ -56,6 +57,7 @@ export default function ServicesPage() {
       </section>
 
       <section className="section-y">
+        <h2 className="sr-only">Các dịch vụ</h2>
         <div className="container-site grid gap-5 md:grid-cols-2">
           {services.map((s) => (
             <Reveal key={s.slug}>

@@ -11,7 +11,7 @@ export default function NotFound() {
       </p>
       <div className="relative container-site flex flex-col items-center text-center">
         <PreTitle data-reveal>Lỗi 404</PreTitle>
-        <h1 data-reveal className="mt-3 text-[2.5rem] leading-[1.15] md:text-[4rem]">
+        <h1 className="mt-3 text-[2.5rem] leading-[1.15] md:text-[4rem]">
           Không tìm thấy <Accent>trang</Accent>
         </h1>
         <p data-reveal className="mt-4 max-w-md md:text-lg">Trang bạn tìm có thể đã được di chuyển hoặc không còn tồn tại.</p>

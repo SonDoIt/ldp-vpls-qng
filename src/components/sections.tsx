@@ -91,13 +91,13 @@ export function ConsultationSection() {
           <div className="relative z-[2] grid grid-cols-1 gap-4 px-4 pb-8 text-center sm:grid-cols-2">
             <div>
               <p className="text-sm text-heading">Điện thoại / Zalo</p>
-              <a href={office.phoneHref} className="text-xl text-heading hover:text-accent md:text-[1.375rem]">
+              <a href={office.phoneHref} className="text-xl text-heading hover:text-accent-ink md:text-[1.375rem]">
                 {office.phone}
               </a>
             </div>
             <div>
               <p className="text-sm text-heading">Gửi email</p>
-              <a href={`mailto:${office.email}`} className="text-xl break-all text-heading hover:text-accent md:text-[1.375rem]">
+              <a href={`mailto:${office.email}`} className="text-xl break-all text-heading hover:text-accent-ink md:text-[1.375rem]">
                 {office.email}
               </a>
             </div>
@@ -231,14 +231,14 @@ export function DarkPageHero({
   className?: string;
 }) {
   return (
-    <section className={`bg-heading pt-36 pb-16 text-center md:pt-40 md:pb-20 ${className}`}>
+    <section className={`on-dark bg-heading pt-36 pb-16 text-center md:pt-40 md:pb-20 ${className}`}>
       <div className="container-site flex flex-col items-center">
         {pretitle && (
           <PreTitle data-reveal tone="accent">
             {pretitle}
           </PreTitle>
         )}
-        <h1 data-reveal className="mt-3 max-w-3xl text-[2.75rem] leading-[1.1] text-white md:text-[4.25rem]">{title}</h1>
+        <h1 className="mt-3 max-w-3xl text-[2.75rem] leading-[1.1] text-white md:text-[4.25rem]">{title}</h1>
         {children && <div data-reveal className="mt-4 max-w-xl text-base text-white md:text-lg">{children}</div>}
       </div>
     </section>

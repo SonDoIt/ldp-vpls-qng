@@ -6,7 +6,7 @@ import { Accent, ButtonLink, CredentialBadge } from "./ui";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-heading pt-[var(--section-space)] pb-10 text-line">
+    <footer className="on-dark bg-heading pt-[var(--section-space)] pb-10 text-line">
       <div className="container-site">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div data-reveal>
@@ -51,18 +51,18 @@ export function SiteFooter() {
             <h2 className="font-serif text-[1.875rem] text-white">Liên hệ</h2>
             <ul className="mt-6 flex flex-col gap-3">
               <li>
-                <a href={office.phoneHref} className="transition-colors duration-300 hover:text-accent">
+                <a href={office.phoneHref} className="transition-colors duration-300 hover:text-accent-ink">
                   {office.phone}
                 </a>{" "}
                 (Zalo)
               </li>
               <li>
-                <a href={`mailto:${office.email}`} className="transition-colors duration-300 hover:text-accent">
+                <a href={`mailto:${office.email}`} className="transition-colors duration-300 hover:text-accent-ink">
                   {office.email}
                 </a>
               </li>
               <li className="max-w-xs">
-                <a href={office.mapsUrl} target="_blank" rel="noopener noreferrer" className="transition-colors duration-300 hover:text-accent">
+                <a href={office.mapsUrl} target="_blank" rel="noopener noreferrer" className="transition-colors duration-300 hover:text-accent-ink">
                   {office.address}
                 </a>
               </li>

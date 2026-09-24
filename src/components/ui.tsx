@@ -6,7 +6,7 @@ import { Burst, Sparkle } from "./icons";
 
 /** Orange emphasis inside a serif heading ("Chuyên nghiệp <Accent>tận tâm</Accent>"). */
 export function Accent({ children }: { children: ReactNode }) {
-  return <span className="text-accent">{children}</span>;
+  return <span className="text-accent-ink">{children}</span>;
 }
 
 /** Small kicker above a heading, prefixed with the outlined sparkle. */
@@ -22,7 +22,7 @@ export function PreTitle({
     <p
       {...props}
       className={`flex items-center gap-1.5 text-sm leading-tight ${
-        tone === "accent" ? "text-accent" : "text-heading"
+        tone === "accent" ? "text-accent-ink" : "text-heading"
       } ${className}`}
     >
       <Sparkle className="size-3 shrink-0" />
@@ -107,7 +107,13 @@ export function PhotoPanel({
   return (
     <div className={`relative flex flex-col overflow-hidden md:justify-end ${className}`}>
       <div className={`relative ${aspect} md:absolute md:inset-0 md:aspect-auto`}>
-        <Image src={src} alt="" fill priority={priority} sizes={sizes} className={`object-cover ${imageClassName}`} />
+        <Image
+          src={src}
+          alt=""
+          fill
+          loading={priority ? "eager" : undefined}
+          fetchPriority={priority ? "high" : undefined}
+          sizes={sizes} className={`object-cover ${imageClassName}`} />
         <ImageFade to={fadeTo} className={fadeClassName} />
       </div>
       <div className={`relative z-[2] -mt-14 md:mt-0 ${contentClassName}`}>{children}</div>

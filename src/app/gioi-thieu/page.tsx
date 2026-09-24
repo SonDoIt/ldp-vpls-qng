@@ -22,12 +22,13 @@ function Hero() {
             src="/images/about-hero.webp"
             alt=""
             fill
-            priority
+            loading="eager"
+            fetchPriority="high"
             sizes="(min-width: 1140px) 1100px, 100vw"
             className="-z-10 object-cover object-top"
           />
           <ImageFade to="white" />
-          <h1 data-reveal className="relative z-[2] text-[2.75rem] leading-[1.1] md:text-[4.5rem]">
+          <h1 className="relative z-[2] text-[2.75rem] leading-[1.1] md:text-[4.5rem]">
             Về <Accent>Văn phòng</Accent>
           </h1>
         </div>
@@ -148,7 +149,7 @@ function TeamSection() {
           {teamGroups.map((g) => (
             <Reveal key={g.title} className="rounded-md bg-cream p-6 md:p-8">
               <span className="grid size-8 place-items-center rounded-xxs border border-line bg-white">
-                <StarFilled className="size-4 text-accent" />
+                <StarFilled className="size-4 text-accent-ink" />
               </span>
               <h3 className="mt-4 font-sans text-xl font-medium">{g.title}</h3>
               <p className="mt-2 text-base">{g.text}</p>
@@ -181,7 +182,7 @@ function Story() {
               <details key={s.title} name="story" open={i === 0} className="group rounded-xs transition-colors open:bg-sand">
                 <summary className="flex cursor-pointer items-center justify-between gap-4 px-4 py-3.5 text-heading md:text-lg">
                   <span className="flex items-center gap-2">
-                    <StarFilled className="size-4 text-accent opacity-0 transition-opacity group-open:opacity-100" />
+                    <StarFilled className="size-4 text-accent-ink opacity-0 transition-opacity group-open:opacity-100" />
                     {s.title}
                   </span>
                   <span className="grid size-6 place-items-center rounded-full transition-colors group-open:bg-white">
@@ -211,7 +212,7 @@ function Values() {
               {col.map((v) => (
                 <Reveal key={v.title} className={`max-w-xs ${c === 1 ? "lg:flex lg:flex-col lg:items-end" : ""}`}>
                   <span className="grid size-8 place-items-center rounded-xxs border border-line bg-white">
-                    <StarFilled className="size-4 text-accent" />
+                    <StarFilled className="size-4 text-accent-ink" />
                   </span>
                   <h3 className="mt-4 font-sans text-lg font-medium md:text-xl">{v.title}</h3>
                   <p className="mt-1.5 text-base">{v.text}</p>

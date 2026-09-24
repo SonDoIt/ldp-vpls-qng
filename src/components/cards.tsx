@@ -35,7 +35,8 @@ export function MemberCard({ member, priority = false }: { member: Member; prior
           src={member.image}
           alt={member.name}
           fill
-          priority={priority}
+          loading={priority ? "eager" : undefined}
+          fetchPriority={priority ? "high" : undefined}
           sizes="(min-width: 64rem) 22vw, (min-width: 40rem) 45vw, 90vw"
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />

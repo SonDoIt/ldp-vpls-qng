@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 function ContactItem({ icon, label, children, note }: { icon: ReactNode; label: string; children: ReactNode; note?: string }) {
   return (
     <li className="flex gap-3 border-b border-line py-5 last:border-0">
-      <span className="grid size-9 shrink-0 place-items-center rounded-xxs bg-sand text-accent">{icon}</span>
+      <span className="grid size-9 shrink-0 place-items-center rounded-xxs bg-sand text-accent-ink">{icon}</span>
       <div>
         <p className="text-sm">{label}</p>
         <div className="mt-0.5 text-lg text-heading">{children}</div>
@@ -39,7 +39,7 @@ export default function ContactPage() {
         </p>
         <div className="relative container-site grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
           <div className="flex flex-col justify-between gap-10">
-            <h1 data-reveal className="text-[2.75rem] leading-[1.1] md:text-[4rem]">
+            <h1 className="text-[2.75rem] leading-[1.1] md:text-[4rem]">
               Liên hệ Văn phòng
               <br />
               <Accent>Thi hành án dân sự Quảng Ngãi</Accent>
@@ -48,20 +48,20 @@ export default function ContactPage() {
               <PreTitle>Liên hệ trực tiếp</PreTitle>
               <ul className="mt-2">
                 <ContactItem icon={<Phone className="size-4" />} label="Điện thoại / Zalo">
-                  <a href={office.phoneHref} className="hover:text-accent">
+                  <a href={office.phoneHref} className="hover:text-accent-ink">
                     {office.phone}
                   </a>
-                  <a href={office.zaloHref} target="_blank" rel="noopener noreferrer" className="ml-3 text-sm underline underline-offset-4 hover:text-accent">
+                  <a href={office.zaloHref} target="_blank" rel="noopener noreferrer" className="ml-3 text-sm underline underline-offset-4 hover:text-accent-ink">
                     Nhắn Zalo
                   </a>
                 </ContactItem>
                 <ContactItem icon={<Mail className="size-4" />} label="Email">
-                  <a href={`mailto:${office.email}`} className="break-all hover:text-accent">
+                  <a href={`mailto:${office.email}`} className="break-all hover:text-accent-ink">
                     {office.email}
                   </a>
                 </ContactItem>
                 <ContactItem icon={<MapPin className="size-4" />} label="Trụ sở">
-                  <a href={office.mapsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+                  <a href={office.mapsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-accent-ink">
                     {office.address}
                   </a>
                 </ContactItem>

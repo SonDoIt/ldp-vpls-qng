@@ -46,7 +46,7 @@ export function SiteHeader() {
   };
   const pagesActive = pagesNav.some((item) => isActive(pathname, item.href));
   const linkClass = (active: boolean) =>
-    `transition-colors duration-300 hover:text-accent ${active ? "text-accent" : "text-body"}`;
+    `transition-colors duration-300 hover:text-accent-ink ${active ? "text-accent-ink" : "text-body"}`;
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 pt-[0.9375rem] lg:pt-5">
@@ -82,7 +82,7 @@ export function SiteHeader() {
                       href={item.href}
                       onClick={close}
                       className={`block rounded-xs px-3 py-2.5 transition-colors duration-200 hover:bg-cream ${
-                        isActive(pathname, item.href) ? "text-accent" : "text-body hover:text-heading"
+                        isActive(pathname, item.href) ? "text-accent-ink" : "text-body hover:text-heading"
                       }`}
                     >
                       {item.label}
@@ -130,7 +130,7 @@ export function SiteHeader() {
                   <Link
                     href={item.href}
                     onClick={close}
-                    className={`block py-2.5 text-lg ${isActive(pathname, item.href) ? "text-accent" : "text-body"}`}
+                    className={`block py-2.5 text-lg ${isActive(pathname, item.href) ? "text-accent-ink" : "text-body"}`}
                   >
                     {item.label}
                   </Link>

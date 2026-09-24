@@ -12,7 +12,7 @@ export function NavLink({ href, children, className = "" }: { href: string; chil
     <Link
       href={href}
       aria-current={active ? "page" : undefined}
-      className={`transition-colors duration-300 hover:text-accent ${active ? "text-accent" : ""} ${className}`}
+      className={`transition-colors duration-300 hover:text-accent-ink ${active ? "text-accent-ink" : ""} ${className}`}
     >
       {children}
     </Link>

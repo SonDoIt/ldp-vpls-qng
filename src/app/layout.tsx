@@ -18,7 +18,7 @@ const inter = Inter({
 const serif = Newsreader({
   variable: "--font-serif-display",
   subsets: ["latin", "vietnamese"],
-  weight: ["400", "500"],
+  weight: "400",
   display: "swap",
 });
 

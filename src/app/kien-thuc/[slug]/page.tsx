@@ -49,19 +49,20 @@ export default async function ArticlePage({ params }: PageProps<"/kien-thuc/[slu
       <section className="pt-24 md:pt-28">
         <div className="container-site">
           <div className="rounded-lg bg-sand p-2 md:rounded-xl md:p-2.5">
-            <div data-reveal className="rounded-md bg-white px-5 py-6 text-center md:rounded-lg md:px-10 md:py-8">
+            <div className="rounded-md bg-white px-5 py-6 text-center md:rounded-lg md:px-10 md:py-8">
               <span className="inline-block rounded-full bg-line px-3 py-1 text-sm text-heading">{item.category}</span>
               <h1 className="mx-auto mt-4 max-w-4xl text-[2.25rem] leading-tight md:text-[3.25rem]">{item.title}</h1>
               <p className="mt-4 text-sm">
                 {office.name} · Cập nhật <time dateTime={item.updated}>{formatDate(item.updated)}</time>
               </p>
             </div>
-            <div data-reveal className="relative mt-2 aspect-[4/3] overflow-hidden rounded-md sm:aspect-[16/6] md:mt-2.5 md:rounded-lg">
+            <div className="relative mt-2 aspect-[4/3] overflow-hidden rounded-md sm:aspect-[16/6] md:mt-2.5 md:rounded-lg">
               <Image
                 src={item.image}
                 alt=""
                 fill
-                priority
+                loading="eager"
+                fetchPriority="high"
                 sizes="(min-width: 1420px) 1340px, 100vw"
                 className="object-cover"
               />

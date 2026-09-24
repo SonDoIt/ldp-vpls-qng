@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 @theme inline {
+  /* Gold for text: darkened on light surfaces to meet WCAG AA, bright on the navy ones (.on-dark). */
+  --color-accent-ink: var(--accent-ink);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-serif-display), ui-serif, Georgia, serif;
 }
@@ -87,6 +89,7 @@
 }
 
 :root {
+  --accent-ink: #86662b;
   --gutter: 0.9375rem;
   --section-space: 5.625rem;
 }
@@ -103,6 +106,10 @@
     --gutter: 1.875rem;
     --section-space: 9.375rem;
   }
+}
+
+.on-dark {
+  --accent-ink: var(--color-accent);
 }
 
 /* Element defaults live in the base layer so utilities (text-white, font-sans...) can override them. */

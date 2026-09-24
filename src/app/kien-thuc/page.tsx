@@ -28,6 +28,7 @@ export default function ArticlesPage() {
         với Văn phòng.
       </DarkPageHero>
       <section className="section-y">
+        <h2 className="sr-only">Bài viết</h2>
         <div className="container-site grid gap-5 lg:grid-cols-2">
           {articles.map((a) => (
             <Reveal key={a.slug}>

@@ -41,8 +41,8 @@ function Hero() {
             contentClassName="px-4 pb-8 md:pb-10"
           >
             <div className="flex flex-col items-center">
-              <h1 data-reveal className="max-w-5xl text-[2.625rem] leading-[1.1] md:text-[4.25rem] lg:text-[4.75rem]">
-                Thừa hành viên <span className="whitespace-nowrap text-accent">tận tâm</span> tại Quảng Ngãi
+              <h1 className="max-w-5xl text-[2.625rem] leading-[1.1] md:text-[4.25rem] lg:text-[4.75rem]">
+                Thừa hành viên <span className="whitespace-nowrap text-accent-ink">tận tâm</span> tại Quảng Ngãi
               </h1>
               <p data-reveal className="mt-5 max-w-2xl text-base md:text-lg">
                 {office.name}: tống đạt, lập vi bằng, xác minh điều kiện thi hành án dân sự và tổ chức thi hành
@@ -64,6 +64,7 @@ function ServicesPreview() {
   return (
     <section className="bg-[linear-gradient(180deg,var(--color-cream)_50%,#fff_50%)]">
       <div className="container-site">
+        <h2 className="sr-only">Dịch vụ của Văn phòng</h2>
         <div className="grid gap-5 rounded-t-lg bg-white p-2.5 md:grid-cols-2 md:rounded-t-xl md:p-5">
           {services.map((s) => (
             <Reveal key={s.slug}>

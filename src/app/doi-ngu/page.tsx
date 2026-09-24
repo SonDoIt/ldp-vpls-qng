@@ -59,7 +59,7 @@ export default function TeamPage() {
             {teamGroups.map((g) => (
               <Reveal key={g.title} className="rounded-md bg-white p-6 md:p-8">
                 <span className="grid size-8 place-items-center rounded-xxs border border-line bg-cream">
-                  <StarFilled className="size-4 text-accent" />
+                  <StarFilled className="size-4 text-accent-ink" />
                 </span>
                 <h3 className="mt-4 font-sans text-xl font-medium">{g.title}</h3>
                 <p className="mt-2 text-base">{g.text}</p>
