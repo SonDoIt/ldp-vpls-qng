@@ -127,7 +127,7 @@ function Justice() {
           <p
             aria-hidden="true"
             data-reveal
-            className="pointer-events-none absolute top-[12%] left-1/2 -translate-x-1/2 bg-[linear-gradient(180deg,var(--color-sand),transparent_85%)] bg-clip-text font-serif text-[6rem] leading-none whitespace-nowrap text-transparent select-none sm:text-[10rem] md:text-[14rem] lg:text-[17rem]"
+            className="pointer-events-none absolute top-[12%] left-1/2 -translate-x-1/2 bg-[linear-gradient(180deg,var(--color-sand),transparent_85%)] bg-clip-text font-display text-[6rem] leading-none whitespace-nowrap text-transparent select-none sm:text-[10rem] md:text-[14rem] lg:text-[17rem]"
           >
             Công lý
           </p>

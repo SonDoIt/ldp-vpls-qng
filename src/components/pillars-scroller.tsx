@@ -62,7 +62,7 @@ export function PillarsScroller() {
           />
           <ImageFade to="white" className="h-[90%] md:h-[70%]" />
           <div className="relative z-[2] px-4 pb-2 text-center">
-            <p className="font-serif text-[1.875rem] leading-tight text-heading md:text-[2.25rem]">
+            <p className="font-display text-[1.875rem] leading-tight text-heading md:text-[2.25rem]">
               Xây dựng trên <Accent>niềm tin</Accent> và <Accent>sự rõ ràng</Accent>
             </p>
             <p className="mt-2 text-base md:text-lg">Luôn hướng đến mục tiêu của bạn ở từng bước</p>

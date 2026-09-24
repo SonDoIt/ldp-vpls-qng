@@ -33,7 +33,7 @@ export default function ContactPage() {
       <section className="relative overflow-hidden pt-32 pb-[var(--section-space)] md:pt-36">
         <p
           aria-hidden="true"
-          className="pointer-events-none absolute top-20 left-1/2 -translate-x-1/2 bg-[linear-gradient(180deg,var(--color-sand),transparent_80%)] bg-clip-text font-serif text-[7rem] leading-none whitespace-nowrap text-transparent select-none md:top-16 md:text-[13rem] lg:text-[16rem]"
+          className="pointer-events-none absolute top-20 left-1/2 -translate-x-1/2 bg-[linear-gradient(180deg,var(--color-sand),transparent_80%)] bg-clip-text font-display text-[7rem] leading-none whitespace-nowrap text-transparent select-none md:top-16 md:text-[13rem] lg:text-[16rem]"
         >
           Liên hệ
         </p>

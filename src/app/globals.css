@@ -4,7 +4,6 @@
   /* Gold for text: darkened on light surfaces to meet WCAG AA, bright on the navy ones (.on-dark). */
   --color-accent-ink: var(--accent-ink);
   --font-sans: var(--font-manrope), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-serif: var(--font-serif-display), ui-serif, Georgia, serif;
 }
 
 /*
@@ -83,6 +82,12 @@
   color: transparent;
 }
 
+/* Display lines that are not headings (pull quotes, footer tagline, logo) take the heading weight. */
+@utility font-display {
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
 /* Soft edges for horizontal marquees. */
 @utility mask-fade-x {
   mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
@@ -149,8 +154,8 @@ body {
   h5,
   h6 {
     color: var(--color-heading);
-    font-family: var(--font-serif);
-    font-weight: 500;
+    font-weight: 600;
+    letter-spacing: -0.015em;
     line-height: 1.2;
     text-wrap: balance;
   }
@@ -166,15 +171,39 @@ body {
     border-radius: 4px;
   }
 
-  /* Native <details> accordion: hide the default marker, animate the body open. */
+  /* Native <details> accordion: hide the default marker, animate the body open. The summary is a
+     toggle, so clicking it must not also start a text selection. */
   summary {
     list-style: none;
+    user-select: none;
+    -webkit-user-select: none;
   }
   summary::-webkit-details-marker {
     display: none;
   }
   details[open] > .details-body {
     animation: fade-in 300ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+}
+
+/*
+ * Accordion height: the panel slides open and shut instead of snapping. Needs ::details-content and
+ * interpolate-size (Chromium 131+); elsewhere the panel toggles instantly with the body fade above.
+ * `allow-discrete` keeps the content rendered until the close transition has finished.
+ */
+@supports (interpolate-size: allow-keywords) and selector(::details-content) {
+  details {
+    interpolate-size: allow-keywords;
+  }
+  details::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition:
+      block-size 300ms cubic-bezier(0.23, 1, 0.32, 1),
+      content-visibility 300ms allow-discrete;
+  }
+  details[open]::details-content {
+    block-size: auto;
   }
 }
 

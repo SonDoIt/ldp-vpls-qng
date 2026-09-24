@@ -11,7 +11,7 @@ export function SiteFooter() {
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div data-reveal>
             <Logo tone="light" />
-            <p className="mt-5 max-w-[16ch] font-serif text-[2.5rem] leading-[1.15] text-white md:text-[3.375rem]">
+            <p className="mt-5 max-w-[16ch] font-display text-[2.5rem] leading-[1.15] text-white md:text-[3.375rem]">
               Tận tâm trong từng <Accent>giải pháp</Accent>.
             </p>
           </div>
@@ -22,7 +22,7 @@ export function SiteFooter() {
 
         <div className="mt-16 grid gap-12 md:grid-cols-2 lg:mt-20 lg:grid-cols-[1.6fr_1fr_1.1fr]">
           <div data-reveal>
-            <h2 className="font-serif text-[1.875rem] text-white">Liên kết</h2>
+            <h2 className="font-display text-[1.875rem] text-white">Liên kết</h2>
             <div className="mt-6 grid grid-cols-2 gap-x-8 sm:max-w-sm">
               {[footerNav.pages, footerNav.more].map((group, i) => (
                 <ul key={i} className="flex flex-col gap-3">
@@ -36,7 +36,7 @@ export function SiteFooter() {
             </div>
           </div>
           <div data-reveal>
-            <h2 className="font-serif text-[1.875rem] text-white">Giờ làm việc</h2>
+            <h2 className="font-display text-[1.875rem] text-white">Giờ làm việc</h2>
             <ul className="mt-6 flex flex-col gap-3">
               <li>{office.workdays}</li>
               {office.sessions.map((s) => (
@@ -48,7 +48,7 @@ export function SiteFooter() {
             </ul>
           </div>
           <div data-reveal>
-            <h2 className="font-serif text-[1.875rem] text-white">Liên hệ</h2>
+            <h2 className="font-display text-[1.875rem] text-white">Liên hệ</h2>
             <ul className="mt-6 flex flex-col gap-3">
               <li>
                 <a href={office.phoneHref} className="transition-colors duration-300 hover:text-accent-ink">

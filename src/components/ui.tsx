@@ -4,7 +4,7 @@ import type { ComponentProps, ReactNode } from "react";
 import { office } from "@/content/site";
 import { Burst, Sparkle } from "./icons";
 
-/** Orange emphasis inside a serif heading ("Chuyên nghiệp <Accent>tận tâm</Accent>"). */
+/** Orange emphasis inside a heading ("Chuyên nghiệp <Accent>tận tâm</Accent>"). */
 export function Accent({ children }: { children: ReactNode }) {
   return <span className="text-accent-ink">{children}</span>;
 }
@@ -43,14 +43,15 @@ export function ButtonLink({ children, size = "md", variant = "accent", classNam
   return (
     <Link
       {...props}
-      className={`inline-flex items-center justify-center gap-2.5 rounded-xs text-heading transition-colors duration-300 md:rounded-md ${
-        size === "md" ? "px-[1.125rem] py-3 md:px-6 md:py-4" : "px-5 py-3"
+      className={`group inline-flex items-center justify-center gap-2.5 rounded-xs font-semibold select-none text-heading transition-colors duration-300 md:rounded-md ${
+        size === "md" ? "px-5 py-3.5 text-[1.0625rem] md:px-7 md:py-4 md:text-lg" : "px-5 py-3 text-[1.0625rem]"
       } ${
         variant === "accent" ? "bg-accent hover:bg-line" : "bg-cream hover:bg-accent"
       } ${className}`}
     >
-      <Burst className="size-3 shrink-0" />
-      <span className="leading-tight">{children}</span>
+      {/* The burst turns half a revolution on hover/focus; it is symmetric, so rest and end look alike. */}
+      <Burst className="size-3.5 shrink-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:rotate-180 group-focus-visible:rotate-180" />
+      <span className="leading-tight whitespace-nowrap">{children}</span>
     </Link>
   );
 }

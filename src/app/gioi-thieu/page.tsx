@@ -56,7 +56,7 @@ function WhoWeAre() {
           </Reveal>
           <Reveal>
             <blockquote className="rounded-md bg-sand p-5 md:p-6">
-              <p className="border-l-2 border-accent pl-4 font-serif text-xl leading-snug text-heading md:text-2xl">
+              <p className="border-l-2 border-accent pl-4 font-display text-xl leading-snug text-heading md:text-2xl">
                 {office.slogan}.
               </p>
             </blockquote>
@@ -168,7 +168,7 @@ function Story() {
         <Reveal className="relative isolate flex min-h-[26rem] flex-col justify-end overflow-hidden rounded-t-lg px-6 pb-4 text-center md:min-h-[32rem] md:rounded-t-xl">
           <Image src="/images/about-story.webp" alt="" fill sizes="(min-width: 64rem) 45vw, 100vw" className="-z-10 object-cover" />
           <ImageFade to="white" />
-          <p className="relative z-[2] mx-auto max-w-md font-serif text-2xl leading-snug text-heading md:text-[1.875rem]">
+          <p className="relative z-[2] mx-auto max-w-md font-display text-2xl leading-snug text-heading md:text-[1.875rem]">
             &ldquo;<Accent>Tận tâm</Accent> trong từng giải pháp.&rdquo;
           </p>
         </Reveal>

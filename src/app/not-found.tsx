@@ -5,7 +5,7 @@ export default function NotFound() {
     <section className="relative overflow-hidden pt-40 pb-[var(--section-space)] md:pt-48">
       <p
         aria-hidden="true"
-        className="pointer-events-none absolute top-24 left-1/2 -translate-x-1/2 bg-[linear-gradient(180deg,var(--color-sand),transparent_85%)] bg-clip-text font-serif text-[10rem] leading-none text-transparent select-none md:text-[18rem]"
+        className="pointer-events-none absolute top-24 left-1/2 -translate-x-1/2 bg-[linear-gradient(180deg,var(--color-sand),transparent_85%)] bg-clip-text font-display text-[10rem] leading-none text-transparent select-none md:text-[18rem]"
       >
         404
       </p>

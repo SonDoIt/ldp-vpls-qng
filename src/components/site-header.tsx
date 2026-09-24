@@ -46,7 +46,7 @@ export function SiteHeader() {
   };
   const pagesActive = pagesNav.some((item) => isActive(pathname, item.href));
   const linkClass = (active: boolean) =>
-    `transition-colors duration-300 hover:text-accent-ink ${active ? "text-accent-ink" : "text-body"}`;
+    `font-semibold whitespace-nowrap xl:text-[1.0625rem] transition-colors duration-300 hover:text-accent-ink ${active ? "text-accent-ink" : "text-body"}`;
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 pt-[0.9375rem] lg:pt-5">
@@ -54,7 +54,7 @@ export function SiteHeader() {
         <div className="relative flex items-center justify-between gap-4 rounded-md border border-line bg-white py-2 pr-2 pl-4 md:py-2.5 md:pl-5">
           <Logo />
 
-          <nav aria-label="Chính" className="hidden items-center gap-10 lg:flex">
+          <nav aria-label="Chính" className="hidden items-center gap-4 lg:flex xl:gap-10">
             {mainNav.slice(0, 2).map((item) => (
               <Link key={item.href} href={item.href} className={linkClass(isActive(pathname, item.href))}>
                 {item.label}

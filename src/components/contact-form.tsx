@@ -20,7 +20,7 @@ function Field({ label, required, children }: { label: string; required?: boolea
 function Success({ onReset }: { onReset: () => void }) {
   return (
     <div role="status" className="animate-fade-in rounded-xs bg-cream px-6 py-10 text-center">
-      <p className="font-serif text-2xl text-heading">Cảm ơn bạn!</p>
+      <p className="font-display text-2xl text-heading">Cảm ơn bạn!</p>
       <p className="mt-2">Yêu cầu đã được ghi nhận. Văn phòng sẽ liên hệ lại với bạn trong giờ làm việc.</p>
       <button type="button" onClick={onReset} className="mt-5 text-heading underline underline-offset-4 hover:text-accent-ink">
         Gửi yêu cầu khác

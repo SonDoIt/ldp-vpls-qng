@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope, Newsreader } from "next/font/google";
+import { Manrope } from "next/font/google";
 import { ScrollEffects } from "@/components/scroll-effects";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -7,19 +7,11 @@ import { office } from "@/content/site";
 import { JsonLd, absoluteUrl, organizationSchema, websiteSchema } from "@/lib/seo";
 import "./globals.css";
 
-// Body face. Variable, so every weight in use (500 body, 600 sub-headings) comes from one file per subset.
+// The site's only face, for body and headings alike. Variable, so every weight in use comes from one
+// file per subset, and it covers Vietnamese diacritics natively.
 const sans = Manrope({
   variable: "--font-manrope",
   subsets: ["latin", "vietnamese"],
-  display: "swap",
-});
-
-// The reference uses Libre Caslon Text, which has no Vietnamese glyphs; Newsreader is the
-// closest transitional serif that does, so diacritics never fall back to another face.
-const serif = Newsreader({
-  variable: "--font-serif-display",
-  subsets: ["latin", "vietnamese"],
-  weight: "500",
   display: "swap",
 });
 
@@ -53,7 +45,7 @@ const revealScript = `(function(){var d=document.documentElement;if(matchMedia("
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="vi" className={`${sans.variable} ${serif.variable} antialiased`} suppressHydrationWarning>
+    <html lang="vi" className={`${sans.variable} antialiased`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: revealScript }} />
       </head>
