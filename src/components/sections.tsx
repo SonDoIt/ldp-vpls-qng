@@ -35,7 +35,7 @@ export function ProcessSteps() {
             <span className="text-fade-accent text-[4.5rem] leading-none tracking-tight md:text-[6.25rem]">
               {String(i + 1).padStart(2, "0")}
             </span>
-            <h3 className="mt-2 font-sans text-xl font-medium md:text-[1.375rem]">{step.title}</h3>
+            <h3 className="mt-2 font-sans text-xl font-semibold md:text-[1.375rem]">{step.title}</h3>
             <p className="mt-1.5 max-w-[26ch] text-base md:text-lg">{step.text}</p>
         </Reveal>
       ))}

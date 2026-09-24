@@ -60,7 +60,7 @@ function WhoWeAre() {
                 {office.slogan}.
               </p>
             </blockquote>
-            <h2 className="mt-8 font-sans text-lg font-medium md:text-xl">Thông tin Văn phòng</h2>
+            <h2 className="mt-8 font-sans text-lg font-semibold md:text-xl">Thông tin Văn phòng</h2>
             <dl className="mt-2">
               {officeFacts.map((f) => (
                 <div key={f.label} className="grid gap-1 border-b border-line py-3 last:border-0 sm:grid-cols-[10rem_1fr] sm:gap-4">
@@ -151,7 +151,7 @@ function TeamSection() {
               <span className="grid size-8 place-items-center rounded-xxs border border-line bg-white">
                 <StarFilled className="size-4 text-accent-ink" />
               </span>
-              <h3 className="mt-4 font-sans text-xl font-medium">{g.title}</h3>
+              <h3 className="mt-4 font-sans text-xl font-semibold">{g.title}</h3>
               <p className="mt-2 text-base">{g.text}</p>
             </Reveal>
           ))}
@@ -214,7 +214,7 @@ function Values() {
                   <span className="grid size-8 place-items-center rounded-xxs border border-line bg-white">
                     <StarFilled className="size-4 text-accent-ink" />
                   </span>
-                  <h3 className="mt-4 font-sans text-lg font-medium md:text-xl">{v.title}</h3>
+                  <h3 className="mt-4 font-sans text-lg font-semibold md:text-xl">{v.title}</h3>
                   <p className="mt-1.5 text-base">{v.text}</p>
                 </Reveal>
               ))}

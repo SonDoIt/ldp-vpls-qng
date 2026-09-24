@@ -111,7 +111,7 @@ export default async function MemberPage({ params }: PageProps<"/doi-ngu/[slug]"
                 <span className="grid size-8 place-items-center rounded-xxs border border-line bg-white">
                   <StarFilled className="size-4 text-accent-ink" />
                 </span>
-                <h3 className="mt-4 font-sans text-xl font-medium">{g.title}</h3>
+                <h3 className="mt-4 font-sans text-xl font-semibold">{g.title}</h3>
                 <p className="mt-2 text-base">{g.text}</p>
               </Reveal>
             ))}

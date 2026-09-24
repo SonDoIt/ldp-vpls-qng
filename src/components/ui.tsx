@@ -67,7 +67,7 @@ export function CredentialBadge({ tone = "dark", className = "" }: { tone?: "dar
         className="h-[30px] w-auto"
       />
       <div className={`leading-tight ${tone === "dark" ? "text-heading" : "text-white"}`}>
-        <p className={`text-sm ${tone === "dark" ? "text-body" : "text-white/80"}`}>{office.credential.top}</p>
+        <p className={`text-sm ${tone === "dark" ? "text-body" : "text-white/90"}`}>{office.credential.top}</p>
         <p className={tone === "light" ? "font-semibold" : ""}>{office.credential.title}</p>
       </div>
     </div>

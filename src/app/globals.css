@@ -16,7 +16,7 @@
 @theme {
   --color-heading: #0a1428; /* headings, footer background */
   --color-heading-soft: #1a3056;
-  --color-body: #5b6474; /* running text */
+  --color-body: #454e5e; /* running text */
   --color-line: #e4e0d6; /* borders, hover fill */
   --color-sand: #efece4; /* cards, chips */
   --color-cream: #f7f5f0; /* tinted sections, inputs */
@@ -124,6 +124,7 @@
   body {
     background-color: white;
     color: var(--color-body);
+    font-weight: 500;
     line-height: 1.4;
   }
 
@@ -135,7 +136,7 @@
   h6 {
     color: var(--color-heading);
     font-family: var(--font-serif);
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.2;
     text-wrap: balance;
   }

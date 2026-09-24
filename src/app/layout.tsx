@@ -12,7 +12,7 @@ import "./globals.css";
 const serif = Newsreader({
   variable: "--font-serif-display",
   subsets: ["latin", "vietnamese"],
-  weight: "400",
+  weight: "500",
   display: "swap",
 });
 

@@ -9,7 +9,7 @@ function Pillar({ item }: { item: (typeof pillars)[number] }) {
   return (
     <div className="flex flex-col items-center text-center">
       <Image src={item.icon} alt="" width={34} height={34} className="size-[34px]" />
-      <h3 className="mt-3 font-sans text-xl font-medium md:text-[1.375rem]">{item.title}</h3>
+      <h3 className="mt-3 font-sans text-xl font-semibold md:text-[1.375rem]">{item.title}</h3>
       <p className="mt-2 max-w-md text-base md:text-lg">{item.text}</p>
     </div>
   );

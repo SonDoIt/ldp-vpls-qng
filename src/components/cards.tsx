@@ -42,7 +42,7 @@ export function MemberCard({ member, priority = false }: { member: Member; prior
         />
         <ImageFade to="white" className="h-[45%]" />
         <div className="absolute inset-x-0 bottom-2 z-[2] px-3 text-center">
-          <p className="text-lg font-medium text-heading md:text-xl">{member.name}</p>
+          <p className="text-lg font-semibold text-heading md:text-xl">{member.name}</p>
           <p className="text-sm">{member.role}</p>
         </div>
       </div>
