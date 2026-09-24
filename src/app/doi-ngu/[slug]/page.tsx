@@ -38,7 +38,7 @@ export default async function MemberPage({ params }: PageProps<"/doi-ngu/[slug]"
     <>
       <section className="pt-24 md:pt-28">
         <div className="container-site grid items-start gap-5 lg:grid-cols-[1fr_2.05fr]">
-          <div className="relative mx-auto aspect-[310/366] w-full max-w-md overflow-hidden rounded-lg lg:sticky lg:top-28">
+          <div className="relative mx-auto aspect-[310/366] w-full max-w-md overflow-hidden rounded-sm lg:sticky lg:top-28">
             <Image
               src={member.image}
               alt={`${member.title} ${member.name}`}
@@ -49,12 +49,12 @@ export default async function MemberPage({ params }: PageProps<"/doi-ngu/[slug]"
               className="object-cover"
             />
           </div>
-          <div className="rounded-lg bg-sand p-2 md:rounded-xl md:p-2.5">
-            <article className="rounded-md bg-white p-5 md:rounded-lg md:p-10">
-              <span className="inline-block rounded-full bg-line px-3 py-1 text-sm text-heading">
+          <div className="rounded-sm bg-sand p-2 md:p-2.5">
+            <article className="rounded-sm bg-white p-5 md:p-10">
+              <span className="inline-block rounded-xs bg-line px-2.5 py-1 text-sm text-heading">
                 {member.title} · {member.role}
               </span>
-              <h1 className="mt-3 text-[2.5rem] leading-tight md:text-[3.25rem]">{member.name}</h1>
+              <h1 className="mt-3 text-4xl md:text-5xl">{member.name}</h1>
               <p className="mt-3 md:text-lg">{member.intro}</p>
               <ul className="mt-4 flex gap-3">
                 {office.socials.map((s) => (
@@ -64,14 +64,14 @@ export default async function MemberPage({ params }: PageProps<"/doi-ngu/[slug]"
                       aria-label={`${s.label}: ${s.handle}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="grid size-9 place-items-center rounded-xxs bg-heading text-white transition-colors hover:bg-accent"
+                      className="grid size-11 place-items-center rounded-xs bg-heading text-white transition-colors hover:bg-accent hover:text-heading active:translate-y-px"
                     >
                       <Social name={s.icon} className="size-4" />
                     </a>
                   </li>
                 ))}
               </ul>
-              <h2 className="mt-12 text-[1.75rem] md:text-[2.125rem]">Thông tin</h2>
+              <h2 className="mt-12 text-3xl">Thông tin</h2>
               <dl className="mt-3">
                 {profile.map((p) => (
                   <div key={p.label} className="grid gap-1 border-b border-line py-3 last:border-0 sm:grid-cols-[10rem_1fr] sm:gap-4 md:text-lg">
@@ -80,13 +80,13 @@ export default async function MemberPage({ params }: PageProps<"/doi-ngu/[slug]"
                   </div>
                 ))}
               </dl>
-              <h2 className="mt-10 text-[1.75rem] md:text-[2.125rem]">Kinh nghiệm hành nghề</h2>
+              <h2 className="mt-10 text-3xl">Kinh nghiệm hành nghề</h2>
               <ul className="mt-3 flex list-disc flex-col gap-1.5 pl-5 md:text-lg">
                 {member.experience.map((e) => (
                   <li key={e}>{e}</li>
                 ))}
               </ul>
-              <h2 className="mt-10 text-[1.75rem] md:text-[2.125rem]">Lĩnh vực phụ trách</h2>
+              <h2 className="mt-10 text-3xl">Lĩnh vực phụ trách</h2>
               <p className="mt-3 md:text-lg">{member.lead}</p>
               <ul className="mt-4 flex flex-wrap gap-2">
                 {member.skills.map((s) => (
@@ -102,13 +102,13 @@ export default async function MemberPage({ params }: PageProps<"/doi-ngu/[slug]"
 
       <section className="section-y">
         <div className="container-site">
-          <h2 data-reveal className="text-center text-[2.5rem] md:text-[3.375rem]">
+          <h2 data-reveal className="text-center text-4xl md:text-5xl">
             Đội ngũ <Accent>chuyên môn</Accent>
           </h2>
           <div className="mt-10 grid gap-5 md:mt-12 md:grid-cols-3">
             {teamGroups.map((g) => (
-              <Reveal key={g.title} className="rounded-md bg-cream p-6 md:p-8">
-                <span className="grid size-8 place-items-center rounded-xxs border border-line bg-white">
+              <Reveal key={g.title} className="rounded-sm bg-cream p-6 md:p-8">
+                <span className="grid size-8 place-items-center rounded-xs border border-line bg-white">
                   <StarFilled className="size-4 text-accent-ink" />
                 </span>
                 <h3 className="mt-4 font-sans text-xl font-semibold">{g.title}</h3>

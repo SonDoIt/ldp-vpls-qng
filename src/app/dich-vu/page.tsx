@@ -19,8 +19,8 @@ export default function ServicesPage() {
     <>
       <section className="pt-24 md:pt-28">
         <div className="container-site">
-          <div className="grid gap-2 rounded-lg bg-sand p-2 md:grid-cols-2 md:rounded-xl md:p-2.5">
-            <div className="relative isolate min-h-[18rem] overflow-hidden rounded-md md:min-h-[24rem] md:rounded-lg">
+          <div className="grid gap-2 rounded-sm bg-sand p-2 md:grid-cols-2 md:p-2.5">
+            <div className="relative isolate min-h-[18rem] overflow-hidden rounded-sm md:min-h-[24rem]">
               <Image
                 src="/images/services/services-hero.webp"
                 alt=""
@@ -32,10 +32,10 @@ export default function ServicesPage() {
               />
               <ImageFade to="sand" />
             </div>
-            <div className="flex flex-col justify-between gap-10 rounded-md bg-white p-5 md:rounded-lg md:p-8">
+            <div className="flex flex-col justify-between gap-10 rounded-sm bg-white p-5 md:p-8">
               <div>
                 <PreTitle data-reveal>4 chức năng của Thừa hành viên</PreTitle>
-                <h1 className="mt-5 text-[2.5rem] leading-[1.15] md:text-[3.25rem]">
+                <h1 className="mt-5 text-4xl md:text-5xl">
                   <Accent>Dịch vụ</Accent> Thừa hành viên tại Quảng Ngãi
                 </h1>
                 <p data-reveal className="mt-4 md:text-lg">
@@ -69,7 +69,7 @@ export default function ServicesPage() {
 
       <section className="bg-cream section-y">
         <div className="container-site">
-          <h2 data-reveal className="mb-12 text-center text-[2.5rem] leading-[1.15] md:mb-16 md:text-[3.375rem]">
+          <h2 data-reveal className="mb-12 text-center text-4xl md:mb-16 md:text-5xl">
             Quy trình <Accent>làm việc</Accent>
           </h2>
           <ProcessSteps />

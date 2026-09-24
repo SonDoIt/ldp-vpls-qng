@@ -31,26 +31,40 @@ export function PreTitle({
   );
 }
 
-type ButtonProps = Omit<ComponentProps<typeof Link>, "className"> & {
-  children: ReactNode;
+type ButtonStyle = {
   size?: "md" | "sm";
-  variant?: "accent" | "cream";
-  className?: string;
+  /** accent: primary action. cream: primary on a gold/cream-heavy area. outline: secondary action. */
+  variant?: "accent" | "cream" | "outline";
 };
 
-/** Orange rounded button with the burst glyph, the reference's only call-to-action style. */
-export function ButtonLink({ children, size = "md", variant = "accent", className = "", ...props }: ButtonProps) {
+const buttonVariants = {
+  accent: "bg-accent hover:bg-line",
+  cream: "bg-cream hover:bg-accent",
+  outline: "border border-line bg-white hover:border-accent hover:bg-accent",
+};
+
+/**
+ * The one call-to-action look, shared by links and form buttons so every state lives here:
+ * hover swaps the fill, active presses 1px down, focus-visible takes the global ring, disabled and
+ * aria-disabled fade and stop reacting. Heights are ≥44px so the target works for touch.
+ */
+export function buttonClass({ size = "md", variant = "accent" }: ButtonStyle = {}) {
+  return `group inline-flex items-center justify-center gap-2.5 rounded-xs px-5 font-semibold text-heading select-none transition-[background-color,border-color,translate] active:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 ${
+    size === "md" ? "min-h-12 text-base md:min-h-14 md:px-6 md:text-lg" : "min-h-11 text-base"
+  } ${buttonVariants[variant]}`;
+}
+
+type ButtonProps = Omit<ComponentProps<typeof Link>, "className"> &
+  ButtonStyle & {
+    children: ReactNode;
+    className?: string;
+  };
+
+/** Gold button with the burst glyph, the reference's only call-to-action style. */
+export function ButtonLink({ children, size, variant, className = "", ...props }: ButtonProps) {
   return (
-    <Link
-      {...props}
-      className={`group inline-flex items-center justify-center gap-2.5 rounded-xs font-semibold select-none text-heading transition-colors duration-300 md:rounded-md ${
-        size === "md" ? "px-5 py-3.5 text-[1.0625rem] md:px-7 md:py-4 md:text-lg" : "px-5 py-3 text-[1.0625rem]"
-      } ${
-        variant === "accent" ? "bg-accent hover:bg-line" : "bg-cream hover:bg-accent"
-      } ${className}`}
-    >
-      {/* The burst turns half a revolution on hover/focus; it is symmetric, so rest and end look alike. */}
-      <Burst className="size-3.5 shrink-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:rotate-180 group-focus-visible:rotate-180" />
+    <Link {...props} className={`${buttonClass({ size, variant })} ${className}`}>
+      <Burst className="size-3.5 shrink-0" />
       <span className="leading-tight whitespace-nowrap">{children}</span>
     </Link>
   );

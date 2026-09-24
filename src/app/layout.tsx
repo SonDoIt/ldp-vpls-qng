@@ -36,8 +36,10 @@ export const metadata: Metadata = {
   formatDetection: { telephone: false },
 };
 
+// Light mode only: browser chrome and form controls never switch to a dark scheme.
 export const viewport: Viewport = {
   themeColor: "#f7f5f0",
+  colorScheme: "light",
 };
 
 // Runs before first paint: arms the scroll reveal (hidden start state) unless motion is reduced, and

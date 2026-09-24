@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArticleCard } from "@/components/cards";
 import { Reveal } from "@/components/reveal";
-import { Accent, ButtonLink, ImageFade } from "@/components/ui";
+import { Accent, ButtonLink, ImageFade, buttonClass } from "@/components/ui";
 import { articles, office, services } from "@/content/site";
 import { JsonLd, articleSchema, breadcrumbSchema } from "@/lib/seo";
 
@@ -48,15 +48,15 @@ export default async function ArticlePage({ params }: PageProps<"/kien-thuc/[slu
     <>
       <section className="pt-24 md:pt-28">
         <div className="container-site">
-          <div className="rounded-lg bg-sand p-2 md:rounded-xl md:p-2.5">
-            <div className="rounded-md bg-white px-5 py-6 text-center md:rounded-lg md:px-10 md:py-8">
-              <span className="inline-block rounded-full bg-line px-3 py-1 text-sm text-heading">{item.category}</span>
-              <h1 className="mx-auto mt-4 max-w-4xl text-[2.25rem] leading-tight md:text-[3.25rem]">{item.title}</h1>
+          <div className="rounded-sm bg-sand p-2 md:p-2.5">
+            <div className="rounded-sm bg-white px-5 py-6 text-center md:px-10 md:py-8">
+              <span className="inline-block rounded-xs bg-line px-2.5 py-1 text-sm text-heading">{item.category}</span>
+              <h1 className="mx-auto mt-4 max-w-4xl text-4xl md:text-5xl">{item.title}</h1>
               <p className="mt-4 text-sm">
                 {office.name} · Cập nhật <time dateTime={item.updated}>{formatDate(item.updated)}</time>
               </p>
             </div>
-            <div className="relative mt-2 aspect-[4/3] overflow-hidden rounded-md sm:aspect-[16/6] md:mt-2.5 md:rounded-lg">
+            <div className="relative mt-2 aspect-[4/3] overflow-hidden rounded-sm sm:aspect-[16/6] md:mt-2.5">
               <Image
                 src={item.image}
                 alt=""
@@ -74,13 +74,13 @@ export default async function ArticlePage({ params }: PageProps<"/kien-thuc/[slu
 
       <section className="section-y">
         <article className="container-narrow md:text-lg">
-          <div data-reveal className="rounded-md border-l-2 border-accent bg-cream p-5 md:p-6">
+          <div data-reveal className="rounded-sm border-l-2 border-accent bg-cream p-5 md:p-6">
             <p className="text-sm font-semibold text-heading">Trả lời ngắn</p>
             <p className="mt-2 text-heading">{item.answer}</p>
           </div>
           {item.sections.map((s) => (
             <div key={s.heading} data-reveal className="mt-10">
-              <h2 className="text-[1.75rem] md:text-[2.125rem]">{s.heading}</h2>
+              <h2 className="text-3xl">{s.heading}</h2>
               {s.paragraphs?.map((p) => (
                 <p key={p} className="mt-3">
                   {p}
@@ -95,7 +95,7 @@ export default async function ArticlePage({ params }: PageProps<"/kien-thuc/[slu
               )}
             </div>
           ))}
-          <div data-reveal className="mt-12 rounded-md bg-sand p-5 md:p-6">
+          <div data-reveal className="mt-12 rounded-sm bg-sand p-5 md:p-6">
             <p className="text-heading">
               Bài viết mang tính tham khảo. Để được tư vấn cho trường hợp cụ thể, vui lòng liên hệ {office.name} qua
               số {office.phone} (điện thoại, Zalo) hoặc email {office.email}.
@@ -107,7 +107,7 @@ export default async function ArticlePage({ params }: PageProps<"/kien-thuc/[slu
               {service && (
                 <Link
                   href={`/dich-vu/${service.slug}`}
-                  className="inline-flex items-center rounded-xs border border-line bg-white px-5 py-3 text-heading transition-colors hover:bg-accent md:rounded-md"
+                  className={buttonClass({ size: "sm", variant: "outline" })}
                 >
                   Dịch vụ {service.title.toLowerCase()}
                 </Link>
@@ -120,7 +120,7 @@ export default async function ArticlePage({ params }: PageProps<"/kien-thuc/[slu
       {others.length > 0 && (
         <section className="section-b">
           <div className="container-site">
-            <h2 data-reveal className="text-center text-[2.5rem] md:text-[3.375rem]">
+            <h2 data-reveal className="text-center text-4xl md:text-5xl">
               Bài viết <Accent>khác</Accent>
             </h2>
             <div className="mt-10 grid gap-5 md:mt-12 lg:grid-cols-2">

@@ -11,7 +11,7 @@ export function SiteFooter() {
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div data-reveal>
             <Logo tone="light" />
-            <p className="mt-5 max-w-[16ch] font-display text-[2.5rem] leading-[1.15] text-white md:text-[3.375rem]">
+            <p className="mt-5 max-w-[16ch] font-display text-4xl text-white md:text-5xl">
               Tận tâm trong từng <Accent>giải pháp</Accent>.
             </p>
           </div>
@@ -22,7 +22,7 @@ export function SiteFooter() {
 
         <div className="mt-16 grid gap-12 md:grid-cols-2 lg:mt-20 lg:grid-cols-[1.6fr_1fr_1.1fr]">
           <div data-reveal>
-            <h2 className="font-display text-[1.875rem] text-white">Liên kết</h2>
+            <h2 className="font-display text-3xl text-white">Liên kết</h2>
             <div className="mt-6 grid grid-cols-2 gap-x-8 sm:max-w-sm">
               {[footerNav.pages, footerNav.more].map((group, i) => (
                 <ul key={i} className="flex flex-col gap-3">
@@ -36,7 +36,7 @@ export function SiteFooter() {
             </div>
           </div>
           <div data-reveal>
-            <h2 className="font-display text-[1.875rem] text-white">Giờ làm việc</h2>
+            <h2 className="font-display text-3xl text-white">Giờ làm việc</h2>
             <ul className="mt-6 flex flex-col gap-3">
               <li>{office.workdays}</li>
               {office.sessions.map((s) => (
@@ -48,21 +48,21 @@ export function SiteFooter() {
             </ul>
           </div>
           <div data-reveal>
-            <h2 className="font-display text-[1.875rem] text-white">Liên hệ</h2>
+            <h2 className="font-display text-3xl text-white">Liên hệ</h2>
             <ul className="mt-6 flex flex-col gap-3">
               <li>
-                <a href={office.phoneHref} className="transition-colors duration-300 hover:text-accent-ink">
+                <a href={office.phoneHref} className="transition-colors hover:text-accent-ink">
                   {office.phone}
                 </a>{" "}
                 (Zalo)
               </li>
               <li>
-                <a href={`mailto:${office.email}`} className="transition-colors duration-300 hover:text-accent-ink">
+                <a href={`mailto:${office.email}`} className="transition-colors hover:text-accent-ink">
                   {office.email}
                 </a>
               </li>
               <li className="max-w-xs">
-                <a href={office.mapsUrl} target="_blank" rel="noopener noreferrer" className="transition-colors duration-300 hover:text-accent-ink">
+                <a href={office.mapsUrl} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent-ink">
                   {office.address}
                 </a>
               </li>
@@ -84,7 +84,7 @@ export function SiteFooter() {
                     aria-label={`${s.label}: ${s.handle}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="grid size-8 place-items-center rounded-xxs bg-white/5 text-white transition-colors duration-300 hover:bg-accent hover:text-heading"
+                    className="grid size-11 place-items-center rounded-xs bg-white/5 text-white transition-colors hover:bg-accent hover:text-heading active:translate-y-px"
                   >
                     <Social name={s.icon} className="size-4" />
                   </a>

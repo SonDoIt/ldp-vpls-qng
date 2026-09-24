@@ -11,7 +11,7 @@ export function Logo({ tone = "dark", className = "" }: { tone?: "dark" | "light
     <Link href="/" className={`flex items-center gap-2.5 ${className}`}>
       <Image src={logoSeal} alt="" width={40} height={40} className="size-9 shrink-0 rounded-full md:size-10" />
       <span
-        className={`font-display text-[15px] leading-[1.15] whitespace-nowrap md:text-base ${
+        className={`font-display text-base whitespace-nowrap ${
           tone === "dark" ? "text-heading" : "text-white"
         }`}
       >

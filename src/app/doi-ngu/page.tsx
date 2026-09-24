@@ -28,7 +28,7 @@ export default function TeamPage() {
         Thừa hành viên giàu kinh nghiệm cùng đội ngũ đã qua đào tạo nghiệp vụ, làm việc tận tâm và đúng quy định pháp luật.
       </DarkPageHero>
       <div className="container-site -mt-16 md:-mt-20">
-        <div className="mx-auto max-w-[1100px] rounded-t-lg bg-white px-4 pt-8 md:rounded-t-xl md:pt-10">
+        <div className="mx-auto max-w-[1100px] rounded-t-sm bg-white px-4 pt-8 md:pt-10">
           <Stats size="md" />
         </div>
       </div>
@@ -40,7 +40,7 @@ export default function TeamPage() {
           </Reveal>
           <Reveal>
             <PreTitle>{head.title}</PreTitle>
-            <h2 className="mt-3 text-[2.5rem] leading-tight md:text-[3.375rem]">{head.name}</h2>
+            <h2 className="mt-3 text-4xl md:text-5xl">{head.name}</h2>
             <p className="mt-1 text-heading md:text-lg">{head.role}</p>
             <p className="mt-5 md:text-lg">{head.intro}</p>
             <ButtonLink href={`/doi-ngu/${head.slug}`} className="mt-8">
@@ -52,13 +52,13 @@ export default function TeamPage() {
 
       <section className="bg-cream section-y">
         <div className="container-site">
-          <h2 data-reveal className="text-center text-[2.5rem] md:text-[3.375rem]">
+          <h2 data-reveal className="text-center text-4xl md:text-5xl">
             Đội ngũ <Accent>chuyên môn</Accent>
           </h2>
           <div className="mt-10 grid gap-5 md:mt-12 md:grid-cols-3">
             {teamGroups.map((g) => (
-              <Reveal key={g.title} className="rounded-md bg-white p-6 md:p-8">
-                <span className="grid size-8 place-items-center rounded-xxs border border-line bg-cream">
+              <Reveal key={g.title} className="rounded-sm bg-white p-6 md:p-8">
+                <span className="grid size-8 place-items-center rounded-xs border border-line bg-cream">
                   <StarFilled className="size-4 text-accent-ink" />
                 </span>
                 <h3 className="mt-4 font-sans text-xl font-semibold">{g.title}</h3>

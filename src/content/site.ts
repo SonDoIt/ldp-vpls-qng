@@ -131,7 +131,7 @@ export const services: Service[] = [
     name: "tống đạt",
     label: "Tống đạt",
     summary: "Tống đạt văn bản của Tòa án, cơ quan thi hành án dân sự đúng trình tự, đúng thời hạn.",
-    image: "/images/services/tong-dat.webp",
+    image: "/images/services/giao-nhan-ho-so.webp",
     definition:
       "Tống đạt là việc thông báo, giao giấy tờ, hồ sơ, tài liệu (như giấy triệu tập, thông báo, bản án, quyết định) cho người có liên quan theo đúng trình tự, thủ tục pháp luật quy định. Thừa hành viên thực hiện tống đạt theo yêu cầu của Tòa án và cơ quan thi hành án dân sự.",
     overview: [
@@ -156,7 +156,7 @@ export const services: Service[] = [
     name: "lập vi bằng",
     label: "Lập vi bằng",
     summary: "Ghi nhận sự kiện, hành vi có thật làm nguồn chứng cứ trong giao dịch và tranh chấp.",
-    image: "/images/services/vi-bang-doc.webp",
+    image: "/images/services/vi-bang-quang-ngai.webp",
     definition:
       "Vi bằng là văn bản do Thừa hành viên (trước đây gọi là Thừa phát lại) lập, ghi nhận sự kiện, hành vi có thật mà Thừa hành viên trực tiếp chứng kiến, theo yêu cầu của cá nhân, cơ quan, tổ chức. Vi bằng là nguồn chứng cứ để Tòa án xem xét khi giải quyết vụ việc và là căn cứ để thực hiện giao dịch theo quy định pháp luật.",
     overview: [
@@ -455,7 +455,7 @@ export const articles: Article[] = [
     description:
       "Vi bằng là văn bản do Thừa hành viên lập, ghi nhận sự kiện, hành vi có thật. Tìm hiểu giá trị pháp lý của vi bằng, điểm khác với công chứng và những việc không được lập vi bằng.",
     category: "Vi bằng",
-    image: "/images/services/vi-bang-doc.webp",
+    image: "/images/services/vi-bang-quang-ngai.webp",
     published: "2026-09-24",
     updated: "2026-09-24",
     answer:

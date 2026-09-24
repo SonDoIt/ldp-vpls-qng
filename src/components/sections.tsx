@@ -14,8 +14,8 @@ export function Stats({ size = "lg", className = "" }: { size?: "lg" | "md"; cla
         <div key={s.label} data-reveal className="flex flex-col-reverse items-center text-center">
           <dt className="mt-2 text-base md:text-lg">{s.label}</dt>
           <dd
-            className={`text-fade-accent leading-[1.1] tracking-tight whitespace-nowrap ${
-              size === "lg" ? "text-[4rem] md:text-[5rem] lg:text-[6.25rem]" : "text-[3.125rem] md:text-[4.375rem]"
+            className={`text-fade-accent tracking-tight whitespace-nowrap ${
+              size === "lg" ? "text-6xl md:text-7xl" : "text-5xl md:text-6xl"
             }`}
           >
             {s.value}
@@ -32,10 +32,10 @@ export function ProcessSteps() {
     <ol className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-14">
       {steps.map((step, i) => (
         <Reveal as="li" key={step.title} className="flex flex-col items-center text-center">
-            <span className="text-fade-accent text-[4.5rem] leading-none tracking-tight md:text-[6.25rem]">
+            <span className="text-fade-accent text-6xl leading-none tracking-tight md:text-7xl">
               {String(i + 1).padStart(2, "0")}
             </span>
-            <h3 className="mt-2 font-sans text-xl font-semibold md:text-[1.375rem]">{step.title}</h3>
+            <h3 className="mt-2 font-sans text-xl font-semibold md:text-2xl">{step.title}</h3>
             <p className="mt-1.5 max-w-[26ch] text-base md:text-lg">{step.text}</p>
         </Reveal>
       ))}
@@ -56,7 +56,7 @@ export function FramedPanel({
   className?: string;
 }) {
   return (
-    <div className={`rounded-lg bg-sand p-2.5 md:rounded-xl ${className}`}>
+    <div className={`rounded-sm bg-sand p-2.5 ${className}`}>
       {label && (
         <p className="flex items-center justify-center gap-2 pt-2 pb-3.5 text-sm text-heading">
           <span className="relative grid size-3 place-items-center">
@@ -66,60 +66,62 @@ export function FramedPanel({
           {label}
         </p>
       )}
-      <div className="rounded-xs bg-white p-4 md:rounded-lg md:p-10">
-        {title && <h2 className="mb-8 text-center text-2xl md:mb-10 md:text-[1.875rem]">{title}</h2>}
+      <div className="rounded-xs bg-white p-4 md:rounded-sm md:p-10">
+        {title && <h2 className="mb-8 text-center text-2xl md:mb-10 md:text-3xl">{title}</h2>}
         {children}
       </div>
     </div>
   );
 }
 
-/**
- * The office photo, sign to desk, with phone/email under it, beside the consultation form (home,
- * services). The photo column is the wider one so the head of office reads clearly without losing the sign.
- */
+/** Photo, contact details and consultation form share one card on home and services. */
 export function ConsultationSection() {
   return (
     <section className="bg-cream section-y">
-      <div className="container-site grid items-stretch gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-10">
-        <Reveal className="on-dark flex flex-col overflow-hidden rounded-lg bg-heading md:rounded-xl">
-          {/* Crops the source's outer margins (4% left/right, 3% top, 9% bottom): the box takes the kept
-              area's aspect ratio and the image is offset inside it, so the crop holds at every width. */}
-          <div className="relative aspect-[1472/1056] overflow-hidden">
-            <Image
-              src="/images/office.webp"
-              alt={`${head.name}, ${head.role}, tại ${office.name}`}
-              width={1600}
-              height={1200}
-              sizes="(min-width: 64rem) 62vw, 110vw"
-              className="absolute top-[-3.41%] left-[-4.35%] h-auto w-[108.7%] max-w-none"
-            />
-            <p className="absolute bottom-4 left-4 rounded-full bg-white/90 px-3.5 py-1.5 text-sm text-heading shadow-sm backdrop-blur">
-              {head.name} · {head.role}
+      <div className="container-site">
+        <Reveal className="grid overflow-hidden rounded-sm border border-line bg-white lg:grid-cols-[1.3fr_1fr]">
+          <div className="flex min-w-0 flex-col">
+            {/* Crops the source's outer margins (4% left/right, 3% top, 9% bottom): the box takes the kept
+                area's aspect ratio and the image is offset inside it, so the crop holds at every width. */}
+            <div className="relative aspect-[1472/1056] overflow-hidden">
+              <Image
+                src="/images/van-phong-quang-ngai.webp"
+                alt={`${head.name}, ${head.role}, tại ${office.name}`}
+                width={1448}
+                height={1086}
+                sizes="(min-width: 64rem) 62vw, 110vw"
+                className="absolute top-[-3.41%] left-[-4.35%] h-auto w-[108.7%] max-w-none"
+              />
+            </div>
+            <div className="flex flex-1 flex-col justify-center px-5 py-6 md:px-8">
+              <p className="text-sm text-heading">{head.name} · {head.role}</p>
+              <div className="mt-4 grid gap-4 sm:grid-cols-[1fr_1.4fr]">
+                <div>
+                  <p className="text-sm">Điện thoại / Zalo</p>
+                  <a href={office.phoneHref} className="text-xl text-heading hover:text-accent-ink md:text-2xl transition-colors">
+                    {office.phone}
+                  </a>
+                </div>
+                <div className="min-w-0">
+                  <p className="text-sm">Gửi email</p>
+                  <a
+                    href={`mailto:${office.email}`}
+                    className="text-lg [overflow-wrap:anywhere] text-heading hover:text-accent-ink md:text-xl transition-colors"
+                  >
+                    {office.email}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="min-w-0 border-t border-line p-5 md:p-8 lg:border-t-0 lg:border-l lg:p-10">
+            <p className="flex items-center gap-2 text-sm text-heading">
+              <span aria-hidden="true" className="size-1.5 shrink-0 rounded-full bg-accent" />
+              Tiếp nhận yêu cầu {office.workdays}
             </p>
-          </div>
-          <div className="grid flex-1 grid-cols-1 content-center gap-4 px-6 py-6 text-center sm:grid-cols-[1fr_1.4fr]">
-            <div>
-              <p className="text-sm text-white/65">Điện thoại / Zalo</p>
-              <a href={office.phoneHref} className="text-xl text-white hover:text-accent-ink md:text-[1.375rem]">
-                {office.phone}
-              </a>
-            </div>
-            <div className="min-w-0">
-              <p className="text-sm text-white/65">Gửi email</p>
-              <a
-                href={`mailto:${office.email}`}
-                className="text-lg [overflow-wrap:anywhere] text-white hover:text-accent-ink md:text-xl"
-              >
-                {office.email}
-              </a>
-            </div>
-          </div>
-        </Reveal>
-        <Reveal>
-          <FramedPanel label={`Tiếp nhận yêu cầu ${office.workdays}`} title="Gửi yêu cầu tư vấn" className="h-full">
+            <h2 className="mt-3 mb-8 text-2xl md:text-3xl">Gửi yêu cầu tư vấn</h2>
             <ContactForm />
-          </FramedPanel>
+          </div>
         </Reveal>
       </div>
     </section>
@@ -134,11 +136,11 @@ function FaqList({ className = "" }: { className?: string }) {
           key={f.q}
           name="faq"
           open={i === 0}
-          className="group rounded-xs border border-line bg-cream transition-colors duration-300 open:bg-cream"
+          className="group rounded-xs border border-l-2 border-line bg-cream transition-colors open:border-l-accent open:bg-white"
         >
-          <summary className="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-heading md:text-lg">
+          <summary className="flex min-h-14 cursor-pointer items-center justify-between gap-4 px-5 py-3 text-heading transition-colors hover:text-accent-ink md:text-lg">
             {f.q}
-            <ChevronDown className="size-4 shrink-0 transition-transform duration-300 group-open:rotate-180" />
+            <ChevronDown className="size-4 shrink-0 transition-transform group-open:rotate-180" />
           </summary>
           <p className="details-body px-5 pb-5 text-base">{f.a}</p>
         </details>
@@ -153,7 +155,7 @@ export function FaqSection({ layout = "split" }: { layout?: "split" | "center" }
     return (
       <section className="section-y">
         <div className="container-narrow">
-          <h2 data-reveal className="text-center text-[2.5rem] md:text-[3.375rem]">
+          <h2 data-reveal className="text-center text-4xl md:text-5xl">
             Câu hỏi <Accent>thường gặp</Accent>
           </h2>
           <FaqList className="mt-10 md:mt-12" />
@@ -165,7 +167,7 @@ export function FaqSection({ layout = "split" }: { layout?: "split" | "center" }
     <section className="section-y">
       <div className="container-site grid gap-12 lg:grid-cols-2 lg:gap-16">
         <div className="flex flex-col justify-between gap-10">
-          <h2 data-reveal className="text-[2.5rem] leading-[1.1] md:text-[4.375rem]">
+          <h2 data-reveal className="text-4xl md:text-6xl">
             Câu hỏi
             <br />
             <Accent>thường gặp</Accent>
@@ -189,7 +191,7 @@ export function CtaBanner() {
   return (
     <section className="section-y">
       <div className="px-[var(--gutter)]">
-        <div className="relative isolate mx-auto flex min-h-[40rem] max-w-[1660px] flex-col justify-end overflow-hidden rounded-t-lg md:min-h-[56rem] md:rounded-t-xl">
+        <div className="relative isolate mx-auto flex min-h-[40rem] max-w-[1660px] flex-col justify-end overflow-hidden rounded-t-sm md:min-h-[56rem]">
           <Image
             src="/images/cta-handshake.webp"
             alt=""
@@ -202,7 +204,7 @@ export function CtaBanner() {
             className="absolute inset-x-0 bottom-0 z-[1] h-[80%] bg-[linear-gradient(180deg,transparent_20%,#fff_45%)] md:h-[75%] md:bg-[linear-gradient(180deg,transparent_15%,#fff_50%)]"
           />
           <div className="relative z-[2] mx-auto flex max-w-3xl flex-col items-center px-4 pb-6 text-center">
-            <h2 data-reveal className="text-[2.5rem] leading-[1.15] md:text-[4rem]">
+            <h2 data-reveal className="text-4xl md:text-6xl">
               Bắt đầu hành trình
               <br />
               đến <Accent>công bằng</Accent> cùng chúng tôi.
@@ -251,7 +253,7 @@ export function DarkPageHero({
             {pretitle}
           </PreTitle>
         )}
-        <h1 className="mt-3 max-w-3xl text-[2.75rem] leading-[1.1] text-white md:text-[4.25rem]">{title}</h1>
+        <h1 className="mt-3 max-w-3xl text-4xl text-white md:text-6xl">{title}</h1>
         {children && <div data-reveal className="mt-4 max-w-xl text-base text-white md:text-lg">{children}</div>}
       </div>
     </section>

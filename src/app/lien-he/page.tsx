@@ -4,7 +4,7 @@ import { ContactForm } from "@/components/contact-form";
 import { Clock, Mail, MapPin, Phone, Social } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
 import { FaqSection, FramedPanel } from "@/components/sections";
-import { Accent, PreTitle } from "@/components/ui";
+import { Accent, PreTitle, buttonClass } from "@/components/ui";
 import { office } from "@/content/site";
 import { JsonLd, breadcrumbSchema } from "@/lib/seo";
 
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 function ContactItem({ icon, label, children, note }: { icon: ReactNode; label: string; children: ReactNode; note?: string }) {
   return (
     <li className="flex gap-3 border-b border-line py-5 last:border-0">
-      <span className="grid size-9 shrink-0 place-items-center rounded-xxs bg-sand text-accent-ink">{icon}</span>
+      <span className="grid size-9 shrink-0 place-items-center rounded-xs bg-sand text-accent-ink">{icon}</span>
       <div>
         <p className="text-sm">{label}</p>
         <div className="mt-0.5 text-lg text-heading">{children}</div>
@@ -33,13 +33,13 @@ export default function ContactPage() {
       <section className="relative overflow-hidden pt-32 pb-[var(--section-space)] md:pt-36">
         <p
           aria-hidden="true"
-          className="pointer-events-none absolute top-20 left-1/2 -translate-x-1/2 bg-[linear-gradient(180deg,var(--color-sand),transparent_80%)] bg-clip-text font-display text-[7rem] leading-none whitespace-nowrap text-transparent select-none md:top-16 md:text-[13rem] lg:text-[16rem]"
+          className="pointer-events-none absolute top-20 left-1/2 -translate-x-1/2 bg-[linear-gradient(180deg,var(--color-sand),transparent_80%)] bg-clip-text font-display text-watermark whitespace-nowrap text-transparent select-none md:top-16"
         >
           Liên hệ
         </p>
         <div className="relative container-site grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
           <div className="flex flex-col justify-between gap-10">
-            <h1 className="text-[2.75rem] leading-[1.1] md:text-[4rem]">
+            <h1 className="text-4xl md:text-6xl">
               Liên hệ Văn phòng
               <br />
               <Accent>Thi hành án dân sự Quảng Ngãi</Accent>
@@ -48,20 +48,20 @@ export default function ContactPage() {
               <PreTitle>Liên hệ trực tiếp</PreTitle>
               <ul className="mt-2">
                 <ContactItem icon={<Phone className="size-4" />} label="Điện thoại / Zalo">
-                  <a href={office.phoneHref} className="hover:text-accent-ink">
+                  <a href={office.phoneHref} className="hover:text-accent-ink transition-colors">
                     {office.phone}
                   </a>
-                  <a href={office.zaloHref} target="_blank" rel="noopener noreferrer" className="ml-3 text-sm underline underline-offset-4 hover:text-accent-ink">
+                  <a href={office.zaloHref} target="_blank" rel="noopener noreferrer" className="ml-3 text-sm underline underline-offset-4 hover:text-accent-ink transition-colors">
                     Nhắn Zalo
                   </a>
                 </ContactItem>
                 <ContactItem icon={<Mail className="size-4" />} label="Email">
-                  <a href={`mailto:${office.email}`} className="break-all hover:text-accent-ink">
+                  <a href={`mailto:${office.email}`} className="break-all hover:text-accent-ink transition-colors">
                     {office.email}
                   </a>
                 </ContactItem>
                 <ContactItem icon={<MapPin className="size-4" />} label="Trụ sở">
-                  <a href={office.mapsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-accent-ink">
+                  <a href={office.mapsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-accent-ink transition-colors">
                     {office.address}
                   </a>
                 </ContactItem>
@@ -80,7 +80,7 @@ export default function ContactPage() {
                       href={s.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 rounded-xs border border-line px-3 py-2 text-sm text-heading transition-colors hover:bg-accent"
+                      className={buttonClass({ size: "sm", variant: "outline" })}
                     >
                       <Social name={s.icon} className="size-4" />
                       {s.label}: {s.handle}
@@ -102,12 +102,12 @@ export default function ContactPage() {
         <div className="container-site">
           <div className="flex flex-col items-center text-center">
             <PreTitle data-reveal>Trụ sở Văn phòng</PreTitle>
-            <h2 data-reveal className="mt-3 text-[2.5rem] md:text-[3.375rem]">
+            <h2 data-reveal className="mt-3 text-4xl md:text-5xl">
               Đường đến <Accent>Văn phòng</Accent>
             </h2>
             <p data-reveal className="mt-3 md:text-lg">{office.address}</p>
           </div>
-          <div data-reveal className="mt-10 overflow-hidden rounded-lg border border-line bg-white md:mt-12 md:rounded-xl">
+          <div data-reveal className="mt-10 overflow-hidden rounded-sm border border-line bg-white md:mt-12">
             <iframe
               src={office.mapsEmbedUrl}
               title={`Bản đồ ${office.name}`}
@@ -121,7 +121,7 @@ export default function ContactPage() {
               href={office.mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-xxs border border-line bg-white px-4 py-2 text-sm text-heading transition-colors hover:bg-accent"
+              className={buttonClass({ size: "sm", variant: "outline" })}
             >
               Chỉ đường trên Google Maps
             </a>

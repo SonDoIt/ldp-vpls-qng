@@ -22,7 +22,7 @@ export function LegalPage({
           <p data-reveal>{intro}</p>
           {sections.map((s, i) => (
             <div key={s.title} data-reveal className="mt-10">
-              <h2 className="text-[1.625rem] md:text-[2rem]">
+              <h2 className="text-2xl md:text-3xl">
                 {i + 1}. {s.title}
               </h2>
               <div className="mt-3 flex flex-col gap-3">

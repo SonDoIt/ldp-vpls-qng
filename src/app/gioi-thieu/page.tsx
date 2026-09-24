@@ -17,7 +17,7 @@ function Hero() {
   return (
     <section className="pt-24 md:pt-28">
       <div className="container-site">
-        <div className="relative isolate mx-auto flex min-h-[22rem] max-w-[1100px] flex-col justify-end overflow-hidden rounded-t-lg px-4 text-center md:min-h-[32rem] md:rounded-t-xl">
+        <div className="relative isolate mx-auto flex min-h-[22rem] max-w-[1100px] flex-col justify-end overflow-hidden rounded-t-sm px-4 text-center md:min-h-[32rem]">
           <Image
             src="/images/about-banner.webp"
             alt=""
@@ -28,7 +28,7 @@ function Hero() {
             className="-z-10 object-cover object-top"
           />
           <ImageFade to="white" />
-          <h1 className="relative z-[2] text-[2.75rem] leading-[1.1] md:text-[4.5rem]">
+          <h1 className="relative z-[2] text-4xl md:text-6xl">
             Về <Accent>Văn phòng</Accent>
           </h1>
         </div>
@@ -55,7 +55,7 @@ function WhoWeAre() {
             </div>
           </Reveal>
           <Reveal>
-            <blockquote className="rounded-md bg-sand p-5 md:p-6">
+            <blockquote className="rounded-sm bg-sand p-5 md:p-6">
               <p className="border-l-2 border-accent pl-4 font-display text-xl leading-snug text-heading md:text-2xl">
                 {office.slogan}.
               </p>
@@ -80,11 +80,11 @@ function WhoWeAre() {
 function Founder() {
   return (
     <section className="px-[var(--gutter)]">
-      <div className="mx-auto max-w-[1660px] rounded-lg bg-cream section-y md:rounded-xl">
+      <div className="mx-auto max-w-[1660px] rounded-sm bg-cream section-y">
         <div className="container-site grid items-center gap-10 lg:grid-cols-[1fr_0.9fr_1fr] lg:gap-12">
           <Reveal>
             <PreTitle>Trưởng Văn phòng</PreTitle>
-            <h2 className="mt-3 text-[2.5rem] leading-tight md:text-[3.375rem]">{head.name}</h2>
+            <h2 className="mt-3 text-4xl md:text-5xl">{head.name}</h2>
             <p className="mt-4 md:text-lg">{head.intro}</p>
             <p className="mt-6 text-sm text-heading">Chức danh</p>
             <ul className="mt-3 flex flex-wrap gap-2">
@@ -96,7 +96,7 @@ function Founder() {
             </ul>
           </Reveal>
           <Reveal className="mx-auto w-full max-w-sm">
-            <div className="relative aspect-[5/5.2] overflow-hidden rounded-t-md">
+            <div className="relative aspect-[5/5.2] overflow-hidden rounded-t-sm">
               <Image src={head.image} alt={`${head.title} ${head.name}`} fill sizes="(min-width: 64rem) 25vw, 90vw" className="object-cover" />
               <ImageFade to="cream" className="h-[40%]" />
               <ul className="absolute inset-x-0 bottom-3 z-[2] flex justify-center gap-2">
@@ -107,7 +107,7 @@ function Founder() {
                       aria-label={`${s.label}: ${s.handle}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="grid size-8 place-items-center rounded-xxs bg-white text-heading transition-colors hover:bg-accent"
+                      className="grid size-11 place-items-center rounded-xs bg-white text-heading transition-colors hover:bg-accent active:translate-y-px"
                     >
                       <Social name={s.icon} className="size-4" />
                     </a>
@@ -117,11 +117,11 @@ function Founder() {
             </div>
           </Reveal>
           <Reveal>
-            <h3 className="text-[1.875rem]">Học vấn & kinh nghiệm</h3>
+            <h3 className="text-3xl">Học vấn & kinh nghiệm</h3>
             <ol className="mt-5">
               {[`${head.education.degree} – ${head.education.school}`, ...head.experience].map((q, i) => (
                 <li key={q} className="flex items-start gap-3 border-b border-line py-4 md:text-lg">
-                  <span className="grid size-6 shrink-0 place-items-center rounded-full bg-white text-xs text-heading">
+                  <span className="grid size-6 shrink-0 place-items-center rounded-full bg-white text-sm text-heading">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   {q}
@@ -141,14 +141,14 @@ function TeamSection() {
       <div className="container-site">
         <div className="flex flex-col items-center text-center">
           <PreTitle data-reveal>Gặp gỡ đội ngũ</PreTitle>
-          <h2 data-reveal className="mt-3 text-[2.5rem] leading-[1.15] md:text-[3.375rem]">
+          <h2 data-reveal className="mt-3 text-4xl md:text-5xl">
             Đội ngũ <Accent>chuyên môn</Accent>
           </h2>
         </div>
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {teamGroups.map((g) => (
-            <Reveal key={g.title} className="rounded-md bg-cream p-6 md:p-8">
-              <span className="grid size-8 place-items-center rounded-xxs border border-line bg-white">
+            <Reveal key={g.title} className="rounded-sm bg-cream p-6 md:p-8">
+              <span className="grid size-8 place-items-center rounded-xs border border-line bg-white">
                 <StarFilled className="size-4 text-accent-ink" />
               </span>
               <h3 className="mt-4 font-sans text-xl font-semibold">{g.title}</h3>
@@ -165,28 +165,28 @@ function Story() {
   return (
     <section className="section-b">
       <div className="container-site grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-        <Reveal className="relative isolate flex min-h-[26rem] flex-col justify-end overflow-hidden rounded-t-lg px-6 pb-4 text-center md:min-h-[32rem] md:rounded-t-xl">
-          <Image src="/images/office.webp" alt="" fill sizes="(min-width: 64rem) 45vw, 100vw" className="-z-10 object-cover" />
+        <Reveal className="relative isolate flex min-h-[26rem] flex-col justify-end overflow-hidden rounded-t-sm px-6 pb-4 text-center md:min-h-[32rem]">
+          <Image src="/images/van-phong-quang-ngai.webp" alt="" fill sizes="(min-width: 64rem) 45vw, 100vw" className="-z-10 object-cover" />
           <ImageFade to="white" />
-          <p className="relative z-[2] mx-auto max-w-md font-display text-2xl leading-snug text-heading md:text-[1.875rem]">
+          <p className="relative z-[2] mx-auto max-w-md font-display text-2xl text-heading md:text-3xl">
             &ldquo;<Accent>Tận tâm</Accent> trong từng giải pháp.&rdquo;
           </p>
         </Reveal>
         <Reveal>
           <PreTitle>Về chúng tôi</PreTitle>
-          <h2 className="mt-3 text-[2.5rem] leading-[1.15] md:text-[3.375rem]">
+          <h2 className="mt-3 text-4xl md:text-5xl">
             Giới thiệu, sứ mệnh <Accent>&amp; tầm nhìn</Accent>
           </h2>
           <div className="mt-8 flex flex-col gap-2">
             {story.map((s, i) => (
-              <details key={s.title} name="story" open={i === 0} className="group rounded-xs transition-colors open:bg-sand">
-                <summary className="flex cursor-pointer items-center justify-between gap-4 px-4 py-3.5 text-heading md:text-lg">
+              <details key={s.title} name="story" open={i === 0} className="group rounded-xs transition-colors hover:bg-cream open:bg-sand">
+                <summary className="flex min-h-12 cursor-pointer items-center justify-between gap-4 px-4 py-3 text-heading md:text-lg">
                   <span className="flex items-center gap-2">
                     <StarFilled className="size-4 text-accent-ink opacity-0 transition-opacity group-open:opacity-100" />
                     {s.title}
                   </span>
                   <span className="grid size-6 place-items-center rounded-full transition-colors group-open:bg-white">
-                    <Plus className="size-3.5 transition-transform duration-300 group-open:rotate-45" />
+                    <Plus className="size-3.5 transition-transform group-open:rotate-45" />
                   </span>
                 </summary>
                 <p className="details-body px-4 pb-4 pl-10 text-base">{s.text}</p>
@@ -203,7 +203,7 @@ function Values() {
   return (
     <section className="overflow-hidden bg-cream section-y">
       <div className="container-site">
-        <h2 data-reveal className="text-center text-[2.5rem] md:text-[3.375rem]">
+        <h2 data-reveal className="text-center text-4xl md:text-5xl">
           Giá trị chúng tôi <Accent>theo đuổi</Accent>
         </h2>
         <div className="mt-12 grid items-center gap-8 md:grid-cols-2 lg:grid-cols-[1fr_auto_1fr] lg:gap-12">
@@ -211,7 +211,7 @@ function Values() {
             <div key={c} className={`flex flex-col gap-8 lg:gap-14 ${c === 1 ? "lg:order-3 lg:items-end lg:text-right" : ""}`}>
               {col.map((v) => (
                 <Reveal key={v.title} className={`max-w-xs ${c === 1 ? "lg:flex lg:flex-col lg:items-end" : ""}`}>
-                  <span className="grid size-8 place-items-center rounded-xxs border border-line bg-white">
+                  <span className="grid size-8 place-items-center rounded-xs border border-line bg-white">
                     <StarFilled className="size-4 text-accent-ink" />
                   </span>
                   <h3 className="mt-4 font-sans text-lg font-semibold md:text-xl">{v.title}</h3>

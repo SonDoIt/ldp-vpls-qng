@@ -26,6 +26,12 @@ The fixed site header is 72px on phones, 80px on tablets, and 88px on wide scree
 
 The homepage service preview is an image-led gallery: all four services link to their detail pages, with the vi bằng image featured on wide screens. Its content and images come from `src/content/site.ts`; the gallery layout lives in `src/app/page.tsx`.
 
+The homepage "Về Văn phòng" block (`src/components/pillars-scroller.tsx`) sticks while scrolling steps through the pillars from `src/content/site.ts`. From 1280px a clickable pillar index sits between the photo and the copy: its gold rail tracks scroll progress and each entry scrolls to its step.
+
+The consultation block on the homepage and service listing (`ConsultationSection` in `src/components/sections.tsx`) uses one white card for the office photo, contact details and form. A thin divider separates the two columns from 1024px; smaller screens stack them within the same outer border. The standalone contact-page form keeps its existing frame.
+
+The office, document handover and vi bằng photos use high-quality WebP (quality 95, original dimensions, no upscaling): `public/images/van-phong-quang-ngai.webp` (1448×1086), `public/images/services/giao-nhan-ho-so.webp` (1536×1024) and `public/images/services/vi-bang-quang-ngai.webp` (1448×1086). These replace the previous image URLs to avoid stale Next.js image-optimizer caches; shared service/article content uses the same assets.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
