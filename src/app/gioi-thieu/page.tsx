@@ -166,7 +166,7 @@ function Story() {
     <section className="section-b">
       <div className="container-site grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <Reveal className="relative isolate flex min-h-[26rem] flex-col justify-end overflow-hidden rounded-t-sm px-6 pb-4 text-center md:min-h-[32rem]">
-          <Image src="/images/van-phong-quang-ngai.webp" alt="" fill sizes="(min-width: 64rem) 45vw, 100vw" className="-z-10 object-cover" />
+          <Image src="/images/van-phong-quang-ngai-original.webp" alt="" fill sizes="(min-width: 64rem) 45vw, 100vw" className="-z-10 object-cover" />
           <ImageFade to="white" />
           <p className="relative z-[2] mx-auto max-w-md font-display text-2xl text-heading md:text-3xl">
             &ldquo;<Accent>Tận tâm</Accent> trong từng giải pháp.&rdquo;

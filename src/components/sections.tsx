@@ -85,10 +85,10 @@ export function ConsultationSection() {
                 area's aspect ratio and the image is offset inside it, so the crop holds at every width. */}
             <div className="relative aspect-[1472/1056] overflow-hidden">
               <Image
-                src="/images/van-phong-quang-ngai.webp"
+                src="/images/van-phong-quang-ngai-original.webp"
                 alt={`${head.name}, ${head.role}, tại ${office.name}`}
-                width={1448}
-                height={1086}
+                width={2560}
+                height={1920}
                 sizes="(min-width: 64rem) 62vw, 110vw"
                 className="absolute top-[-3.41%] left-[-4.35%] h-auto w-[108.7%] max-w-none"
               />
